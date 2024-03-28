@@ -1,5 +1,7 @@
 package dao.library;
 
-public class albumDAO {
+import dao.DBConn;
+
+public class albumDAO extends DBConn {
 
 }

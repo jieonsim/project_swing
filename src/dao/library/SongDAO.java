@@ -1,5 +1,7 @@
 package dao.library;
 
-public class SongDAO {
+import dao.DBConn;
+
+public class SongDAO extends DBConn {
 
 }

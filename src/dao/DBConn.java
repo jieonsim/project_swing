@@ -3,11 +3,9 @@ package dao;
 import java.sql.*;
 
 public class DBConn {
-	Connection conn = null;
-	PreparedStatement pstmt = null;
-	ResultSet rs = null;
-
-	String sql = "";
+	protected Connection conn = null;
+	protected PreparedStatement pstmt = null;
+	protected ResultSet rs = null;
 
 	public DBConn() {
 		String url = "jdbc:mysql://localhost:3306/javaclass";
