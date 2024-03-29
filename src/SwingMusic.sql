@@ -1,9 +1,9 @@
 show tables;
 
-DESC users;
+DESC songs;
 DROP TABLE users;
 DELETE FROM users;
-SELECT * FROM users;
+SELECT * FROM songs;
 
 -- Users (사용자)
 CREATE TABLE users (
@@ -11,16 +11,9 @@ CREATE TABLE users (
 	userID VARCHAR(50) NOT NULL,
 	password VARCHAR(255) NOT NULL,
 	UserName VARCHAR(50) NOT NULL,
-	UserBirthDate DATE NOT NULL, -- 삭제
 	phoneNumber VARCHAR(20) NOT NULL,
 	joinDate DATETIME DEFAULT NOW() -- DEFAULT 키워드로 기본값 설정
 );
-
-ALTER TABLE users DROP COLUMN UserBirthDate;
-ALTER TABLE users MODIFY phoneNumber INT;
-ALTER TABLE users MODIFY phoneNumber VARCHAR(20);
-INSERT INTO users VALUES (DEFAULT, 'jieonsim', 'Jieonsim123!', '심지언', '01085495209', DEFAULT);
-
 
 -- Artists (아티스트)
 CREATE TABLE artists (
@@ -29,7 +22,7 @@ CREATE TABLE artists (
 	imagePath VARCHAR(255)
 );
 
-INSERT INTO artists VALUES (DEFAULT, 'Ariana Grande', '/Images/Artists/ariana1.jpg');
+INSERT INTO artists VALUES (DEFAULT, 'Ariana Grande', null);
 
 
 -- Albums (앨범)
@@ -44,19 +37,22 @@ CREATE TABLE albums (
 	FOREIGN KEY (genreIDX) REFERENCES genres (genreIDX)
 );
 
+INSERT INTO albums (artistIDX, genreIDX, albumName, releaseDate, coverPath) VALUES 
+
+
 -- Songs (노래)
 CREATE TABLE songs (
     songIDX INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     albumIDX INT NOT NULL,
     artistIDX INT NOT NULL,
     songName VARCHAR(100) NOT NULL,
-	duration INT NOT NULL,
+	duration INT NOT NULL, -- 삭제
     FOREIGN KEY (albumIDX) REFERENCES albums(albumIDX),
     FOREIGN KEY (artistIDX) REFERENCES artists(artistIDX)
-    /* 할지 말지 고민 중
-	filePath VARCHAR(255) NOT NULL
-	 */
 );
+ALTER TABLE songs DROP COLUMN duration;
+
+
 
 -- Genres (장르)
 CREATE TABLE genres (
@@ -64,6 +60,14 @@ CREATE TABLE genres (
 	genreName VARCHAR(50) NOT NULL,
 	imagePath VARCHAR(255)
 );
+
+INSERT INTO genres (genreName, imagePath) VALUES ('pop', null);
+INSERT INTO genres (genreName, imagePath) VALUES ('rnbSoul', null);
+INSERT INTO genres (genreName, imagePath) VALUES ('hiphop', null);
+INSERT INTO genres (genreName, imagePath) VALUES ('rock', null);
+INSERT INTO genres (genreName, imagePath) VALUES ('jazz', null);
+INSERT INTO genres (genreName, imagePath) VALUES ('kpop', null);
+
 
 -- SongGenres (노래 장르)
 CREATE TABLE songGenres (
