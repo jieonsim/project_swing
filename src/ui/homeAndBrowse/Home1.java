@@ -11,7 +11,6 @@ import javax.swing.border.*;
 
 @SuppressWarnings("serial")
 public class Home1 extends JFrame {
-	private JTextField txtSearch;
 	private JButton btnHome, btnExit, btnLogin;
 
 	public Home1() {
@@ -37,19 +36,13 @@ public class Home1 extends JFrame {
 		lblMusicLogo.setBounds(22, 10, 158, 64);
 		panel1.add(lblMusicLogo);
 
-		txtSearch = new JTextField();
-		txtSearch.setBorder(new LineBorder(new Color(232, 232, 232), 2, true));
-		txtSearch.setBounds(23, 84, 223, 34);
-		panel1.add(txtSearch);
-		txtSearch.setColumns(10);
-
 		btnHome = new JButton("  Home");
 		btnHome.setContentAreaFilled(false);
 		btnHome.setBorderPainted(false);
 		btnHome.setHorizontalAlignment(SwingConstants.LEFT);
 		btnHome.setFont(new Font("AppleSDGothicNeoM00", Font.PLAIN, 20));
 		btnHome.setIcon(new ImageIcon(Home1.class.getResource("/Images/homelogo.png")));
-		btnHome.setBounds(22, 136, 223, 34);
+		btnHome.setBounds(22, 84, 223, 34);
 		panel1.add(btnHome);
 
 		btnExit = new JButton("  Exit");
@@ -58,8 +51,26 @@ public class Home1 extends JFrame {
 		btnExit.setFont(new Font("AppleSDGothicNeoM00", Font.PLAIN, 20));
 		btnExit.setContentAreaFilled(false);
 		btnExit.setBorderPainted(false);
-		btnExit.setBounds(22, 180, 223, 34);
+		btnExit.setBounds(22, 600, 223, 34);
 		panel1.add(btnExit);
+		
+		JButton btnBrowse = new JButton("  Browse");
+		btnBrowse.setIcon(new ImageIcon(Home1.class.getResource("/Images/browse.png")));
+		btnBrowse.setHorizontalAlignment(SwingConstants.LEFT);
+		btnBrowse.setFont(new Font("AppleSDGothicNeoM00", Font.PLAIN, 20));
+		btnBrowse.setContentAreaFilled(false);
+		btnBrowse.setBorderPainted(false);
+		btnBrowse.setBounds(22, 128, 223, 34);
+		panel1.add(btnBrowse);
+		
+		JButton btnSearch = new JButton("  Search");
+		btnSearch.setIcon(new ImageIcon(Home1.class.getResource("/Images/search.png")));
+		btnSearch.setHorizontalAlignment(SwingConstants.LEFT);
+		btnSearch.setFont(new Font("AppleSDGothicNeoM00", Font.PLAIN, 20));
+		btnSearch.setContentAreaFilled(false);
+		btnSearch.setBorderPainted(false);
+		btnSearch.setBounds(22, 172, 223, 34);
+		panel1.add(btnSearch);
 
 		JPanel panel2 = new JPanel();
 		panel2.setBorder(new LineBorder(new Color(232, 232, 232), 2));
@@ -97,11 +108,11 @@ public class Home1 extends JFrame {
 		btnLogin.setFont(new Font("AppleSDGothicNeoB00", Font.PLAIN, 20));
 		btnLogin.setForeground(new Color(255, 255, 255));
 
-		JLabel lblMent3 = new JLabel("로그인 전 좌측 상단에서 음악을 검색해보실 수 있습니다.");
+		JLabel lblMent3 = new JLabel("로그인 전 좌측 상단 메뉴를 통해 둘러보기와 음악 검색이 가능합니다.");
 		lblMent3.setHorizontalAlignment(SwingConstants.CENTER);
 		lblMent3.setForeground(new Color(128, 128, 128));
 		lblMent3.setFont(new Font("AppleSDGothicNeoM00", Font.PLAIN, 15));
-		lblMent3.setBounds(291, 366, 355, 50);
+		lblMent3.setBounds(262, 364, 427, 50);
 		panel3.add(lblMent3);
 
 		// 로그아웃 상태에서 로그인 버튼 마우스 클릭
@@ -115,7 +126,7 @@ public class Home1 extends JFrame {
 
 		setVisible(true);
 
-		// 로그아웃 상태에서 홈버튼 마우스 클릭
+		// 홈버튼 마우스 클릭
 		btnHome.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
@@ -123,19 +134,26 @@ public class Home1 extends JFrame {
 			}
 		});
 
-		// 로그아웃 상태에서 서치 텍스트필드에 내용 입력 후 엔터 시 처리
-		txtSearch.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				dispose();
-				new Search1();
-			}
-		});
-
-		// 로그아웃 상태에서 종료 버튼 클릭
+		// 종료 버튼 클릭
 		btnExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.exit(0);
+			}
+		});
+		
+		// 브라우저 클릭
+		btnBrowse.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				new Browse1();
+			}
+		});
+		
+		// 서치 클릭
+		btnSearch.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				new Search1();
 			}
 		});
 	}

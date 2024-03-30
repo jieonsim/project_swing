@@ -1,4 +1,4 @@
-package ui.browseCategories;
+package ui.homeAndBrowse;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -6,26 +6,23 @@ import java.util.*;
 
 import javax.swing.*;
 import javax.swing.border.*;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.TableColumnModel;
 
 import serviceAndDao.*;
-import ui.homeAndBrowse.*;
 import ui.library.*;
 
-public class Pop extends JFrame {
-	private JButton btnHome, btnLogout, btnArtists, btnAlbums, btnSongs, btnAllPlaylists, btnFavoriteSongs,
-			btnNewPlaylist, btnAddToFavoriteSongs, btnAddToMyPlaylist, btnExit, btnBrowse;
-	private JTextField txtSearch;
-	private JLabel lblPlaylists, lblAllTracks, lblEssentialAlbums, lblNewReleaseArtistName1, lblNewReleaseArtistName2,
+public class Pop1 extends JFrame {
+	private JButton btnHome, btnLogin, btnExit, btnBrowse;
+	private JLabel lblAllTracks, lblEssentialAlbums, lblNewReleaseArtistName1, lblNewReleaseArtistName2,
 			lblNewReleaseAlbumName3, lblNewReleaseArtistName3, lblEssentialAlbum1, lblEssentialAlbumName1,
 			lblEssentialAlbumArtistName1, lblEssentialAlbum2, lblEssentialAlbumName2, lblEssentialAlbumArtistName2,
 			lblEssentialAlbum3, lblEssentialAlbumName3, lblEssentialAlbumArtistName3;
 	private JTable tableAllTrack;
-	private Vector allTrack, vData;
+	private JButton btnSearch;
 
-	GenreDAO genreDAO = new GenreDAO();
-
-	public Pop() {
-		super("Genres");
+	public Pop1() {
+		super("Swing Music");
 		getContentPane().setBackground(new Color(255, 255, 255));
 		setSize(1280, 720);
 
@@ -47,96 +44,23 @@ public class Pop extends JFrame {
 		lblMusicLogo.setBounds(22, 10, 158, 64);
 		panel1.add(lblMusicLogo);
 
-		txtSearch = new JTextField();
-		txtSearch.setBorder(new LineBorder(new Color(232, 232, 232), 2, true));
-		txtSearch.setBounds(23, 84, 223, 34);
-		panel1.add(txtSearch);
-		txtSearch.setColumns(10);
-
 		btnHome = new JButton("  Home");
 		btnHome.setContentAreaFilled(false);
 		btnHome.setBorderPainted(false);
 		btnHome.setHorizontalAlignment(SwingConstants.LEFT);
 		btnHome.setFont(new Font("AppleSDGothicNeoM00", Font.PLAIN, 20));
 		btnHome.setIcon(new ImageIcon(Home2.class.getResource("/Images/homelogo.png")));
-		btnHome.setBounds(22, 136, 223, 34);
+		btnHome.setBounds(22, 84, 223, 34);
 		panel1.add(btnHome);
 
 		btnBrowse = new JButton("  Browse");
-		btnBrowse.setIcon(new ImageIcon(Home2.class.getResource("/Images/search.png")));
+		btnBrowse.setIcon(new ImageIcon(HipHop1.class.getResource("/Images/browse.png")));
 		btnBrowse.setHorizontalAlignment(SwingConstants.LEFT);
 		btnBrowse.setFont(new Font("AppleSDGothicNeoM00", Font.PLAIN, 20));
 		btnBrowse.setContentAreaFilled(false);
 		btnBrowse.setBorderPainted(false);
-		btnBrowse.setBounds(23, 180, 223, 34);
+		btnBrowse.setBounds(23, 128, 223, 34);
 		panel1.add(btnBrowse);
-
-		JLabel lblLibrary = new JLabel("Library");
-		lblLibrary.setFont(new Font("AppleSDGothicNeoL00", Font.PLAIN, 15));
-		lblLibrary.setBounds(22, 224, 93, 26);
-		panel1.add(lblLibrary);
-
-		btnArtists = new JButton("  Artists");
-		btnArtists.setIcon(new ImageIcon(Home2.class.getResource("/Images/artists.png")));
-		btnArtists.setHorizontalAlignment(SwingConstants.LEFT);
-		btnArtists.setFont(new Font("AppleSDGothicNeoM00", Font.PLAIN, 20));
-		btnArtists.setContentAreaFilled(false);
-		btnArtists.setBorderPainted(false);
-		btnArtists.setBounds(22, 260, 223, 34);
-		panel1.add(btnArtists);
-
-		btnAlbums = new JButton("  Alubms");
-		btnAlbums.setIcon(new ImageIcon(Home2.class.getResource("/Images/albums.png")));
-		btnAlbums.setHorizontalAlignment(SwingConstants.LEFT);
-		btnAlbums.setFont(new Font("AppleSDGothicNeoM00", Font.PLAIN, 20));
-		btnAlbums.setContentAreaFilled(false);
-		btnAlbums.setBorderPainted(false);
-		btnAlbums.setBounds(22, 304, 223, 34);
-		panel1.add(btnAlbums);
-
-		btnSongs = new JButton("  Songs");
-		btnSongs.setIcon(new ImageIcon(Home2.class.getResource("/Images/songs.png")));
-		btnSongs.setHorizontalAlignment(SwingConstants.LEFT);
-		btnSongs.setFont(new Font("AppleSDGothicNeoM00", Font.PLAIN, 20));
-		btnSongs.setContentAreaFilled(false);
-		btnSongs.setBorderPainted(false);
-		btnSongs.setBounds(22, 348, 223, 34);
-		panel1.add(btnSongs);
-
-		lblPlaylists = new JLabel("Playlists");
-		lblPlaylists.setFont(new Font("AppleSDGothicNeoL00", Font.PLAIN, 15));
-		lblPlaylists.setBounds(22, 409, 93, 26);
-		panel1.add(lblPlaylists);
-
-		btnAllPlaylists = new JButton("  All Playlists");
-		btnAllPlaylists.setIcon(new ImageIcon(Home2.class.getResource("/Images/allPlaylists.png")));
-		btnAllPlaylists.setHorizontalAlignment(SwingConstants.LEFT);
-		btnAllPlaylists.setFont(new Font("AppleSDGothicNeoM00", Font.PLAIN, 20));
-		btnAllPlaylists.setContentAreaFilled(false);
-		btnAllPlaylists.setBorderPainted(false);
-		btnAllPlaylists.setBounds(22, 445, 223, 34);
-		panel1.add(btnAllPlaylists);
-
-		btnFavoriteSongs = new JButton("  Favorite Songs");
-		btnFavoriteSongs.setIcon(new ImageIcon(Home2.class.getResource("/Images/favoriteSongsHeartVer.png")));
-		btnFavoriteSongs.setHorizontalAlignment(SwingConstants.LEFT);
-		btnFavoriteSongs.setFont(new Font("AppleSDGothicNeoM00", Font.PLAIN, 20));
-		btnFavoriteSongs.setContentAreaFilled(false);
-		btnFavoriteSongs.setBorderPainted(false);
-		btnFavoriteSongs.setBounds(22, 489, 223, 34);
-		panel1.add(btnFavoriteSongs);
-
-		btnNewPlaylist = new JButton("  New playlist");
-		btnNewPlaylist.setBorderPainted(false);
-		btnNewPlaylist.setIcon(new ImageIcon(Home2.class.getResource("/Images/newPlaylist.png")));
-		btnNewPlaylist.setOpaque(false);
-		btnNewPlaylist.setForeground(Color.BLACK);
-		btnNewPlaylist.setFont(new Font("AppleSDGothicNeoM00", Font.PLAIN, 20));
-		btnNewPlaylist.setContentAreaFilled(false);
-		btnNewPlaylist.setBorder(new EmptyBorder(0, 0, 0, 0));
-		btnNewPlaylist.setBackground(Color.WHITE);
-		btnNewPlaylist.setBounds(30, 534, 158, 34);
-		panel1.add(btnNewPlaylist);
 
 		btnExit = new JButton("  Exit");
 		btnExit.setIcon(new ImageIcon(Home2.class.getResource("/Images/exit.png")));
@@ -146,6 +70,15 @@ public class Pop extends JFrame {
 		btnExit.setBorderPainted(false);
 		btnExit.setBounds(22, 600, 223, 34);
 		panel1.add(btnExit);
+		
+		btnSearch = new JButton("  Search");
+		btnSearch.setIcon(new ImageIcon(HipHop1.class.getResource("/Images/search.png")));
+		btnSearch.setHorizontalAlignment(SwingConstants.LEFT);
+		btnSearch.setFont(new Font("AppleSDGothicNeoM00", Font.PLAIN, 20));
+		btnSearch.setContentAreaFilled(false);
+		btnSearch.setBorderPainted(false);
+		btnSearch.setBounds(22, 172, 223, 34);
+		panel1.add(btnSearch);
 
 		JPanel panel2 = new JPanel();
 		panel2.setBorder(new LineBorder(new Color(232, 232, 232), 2));
@@ -154,17 +87,17 @@ public class Pop extends JFrame {
 		getContentPane().add(panel2);
 		panel2.setLayout(null);
 
-		btnLogout = new JButton("  LOGOUT");
-		btnLogout.setBorder(new EmptyBorder(0, 0, 0, 0));
-		btnLogout.setBorderPainted(false);
-		btnLogout.setOpaque(true);
-		btnLogout.setContentAreaFilled(true);
-		btnLogout.setBackground(new Color(255, 255, 255));
-		btnLogout.setFont(new Font("AppleSDGothicNeoB00", Font.PLAIN, 20));
-		btnLogout.setIcon(new ImageIcon(Home2.class.getResource("/Images/user2.png")));
-		btnLogout.setForeground(new Color(0, 0, 0));
-		btnLogout.setBounds(836, 21, 141, 34);
-		panel2.add(btnLogout);
+		btnLogin = new JButton("  LOGIN");
+		btnLogin.setBorder(new EmptyBorder(0, 0, 0, 0));
+		btnLogin.setBorderPainted(false);
+		btnLogin.setOpaque(true);
+		btnLogin.setContentAreaFilled(true);
+		btnLogin.setBackground(new Color(254, 85, 85));
+		btnLogin.setFont(new Font("AppleSDGothicNeoB00", Font.PLAIN, 20));
+		btnLogin.setIcon(new ImageIcon(HipHop1.class.getResource("/Images/user1WhiteVer.png")));
+		btnLogin.setForeground(new Color(255, 255, 255));
+		btnLogin.setBounds(836, 21, 141, 34);
+		panel2.add(btnLogin);
 
 		JLabel lblPop = new JLabel("Pop");
 		lblPop.setBounds(30, 10, 225, 53);
@@ -185,18 +118,33 @@ public class Pop extends JFrame {
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(23, 88, 274, 473);
 		panel3.add(scrollPane);
-
-		tableAllTrack = new JTable();
+		
+		// ------------ 테이블 설계 ---------------
+		
+		Vector<String> columnNames = new Vector<>();
+		columnNames.add("Song");
+		columnNames.add("Artist");
+		columnNames.add("Album");
+		
+		MusicService musicService = new MusicService();
+		Vector<Vector<Object>> data = musicService.getTracksByGenres("pop");
+		
+		tableAllTrack = new JTable(data, columnNames);
 		scrollPane.setViewportView(tableAllTrack);
 		
-//		allTrack = new Vector<>();
-//		tableAllTrack.add("노래");
-//		tableAllTrack.add("아티스트");
-//		tableAllTrack.add("앨범");
-//		
-//		vData = genreDAO.get
+		// 헤더 이동 고정
+		tableAllTrack.getTableHeader().setReorderingAllowed(false);
 		
-
+		// 전체셀 가운데 정렬
+		DefaultTableCellRenderer dtcr = new DefaultTableCellRenderer();
+		dtcr.setHorizontalAlignment(SwingConstants.CENTER);
+		TableColumnModel tcm = tableAllTrack.getColumnModel();
+		for (int i = 0; i < tcm.getColumnCount(); i++) {
+			tcm.getColumn(i).setCellRenderer(dtcr);
+		}
+		
+		//-----------------------------------------------------
+		
 		JLabel lblNewReleases = new JLabel("New Releases > ");
 		lblNewReleases.setFont(new Font("AppleSDGothicNeoM00", Font.PLAIN, 15));
 		lblNewReleases.setBounds(340, 43, 156, 37);
@@ -302,65 +250,23 @@ public class Pop extends JFrame {
 		lblEssentialAlbumArtistName3.setFont(new Font("AppleSDGothicNeoSB00", Font.PLAIN, 14));
 		lblEssentialAlbumArtistName3.setBounds(777, 534, 169, 27);
 		panel3.add(lblEssentialAlbumArtistName3);
-
-		btnAddToMyPlaylist = new JButton("");
-		btnAddToMyPlaylist.setIcon(new ImageIcon(Pop.class.getResource("/Images/addToPlaylist.png")));
-		btnAddToMyPlaylist.setOpaque(false);
-		btnAddToMyPlaylist.setForeground(Color.BLACK);
-		btnAddToMyPlaylist.setFont(new Font("AppleSDGothicNeoM00", Font.PLAIN, 20));
-		btnAddToMyPlaylist.setContentAreaFilled(false);
-		btnAddToMyPlaylist.setBorderPainted(false);
-		btnAddToMyPlaylist.setBorder(new EmptyBorder(0, 0, 0, 0));
-		btnAddToMyPlaylist.setBackground(Color.WHITE);
-		btnAddToMyPlaylist.setBounds(248, 43, 48, 34);
-		panel3.add(btnAddToMyPlaylist);
-
-		btnAddToFavoriteSongs = new JButton("");
-		btnAddToFavoriteSongs.setIcon(new ImageIcon(Pop.class.getResource("/Images/favoriteSongsHeartVer.png")));
-		btnAddToFavoriteSongs.setOpaque(false);
-		btnAddToFavoriteSongs.setForeground(Color.BLACK);
-		btnAddToFavoriteSongs.setFont(new Font("AppleSDGothicNeoM00", Font.PLAIN, 20));
-		btnAddToFavoriteSongs.setContentAreaFilled(false);
-		btnAddToFavoriteSongs.setBorderPainted(false);
-		btnAddToFavoriteSongs.setBorder(new EmptyBorder(0, 0, 0, 0));
-		btnAddToFavoriteSongs.setBackground(Color.WHITE);
-		btnAddToFavoriteSongs.setBounds(205, 43, 48, 34);
-		panel3.add(btnAddToFavoriteSongs);
-		
 		
 
 //===============================================================================
 
-		// 홈 버튼 클릭 시 처리
+		//  home 버튼
 		btnHome.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				new Home2();
-			}
-		});
-
-		// 텍스트 필드 내용 입력 후 엔터 키 처리
-		txtSearch.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				dispose();
-				new Search2();
-			}
-		});
-
-		// 아티스트 버튼
-		btnArtists.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				dispose();
-				new Artists();
+				new Home1();
 			}
 		});
 		
-		// 로그아웃 버튼
-		btnLogout.addActionListener(new ActionListener() {
+		// login 버튼
+		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				new Home1();
+				new Login();
 			}
 		});
 		
@@ -368,6 +274,22 @@ public class Pop extends JFrame {
 		btnExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.exit(0);
+			}
+		});
+		
+		// browse 버튼
+		btnBrowse.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				new Browse1();
+			}
+		});
+		
+		// search 버튼
+		btnSearch.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				new Search1();
 			}
 		});
 

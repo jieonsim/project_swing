@@ -9,16 +9,15 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 import javax.swing.border.*;
 
-import ui.browseCategories.*;
 import ui.library.Artists;
 
-public class Browse extends JFrame {
-	private JTextField txtSearch;
+public class Browse2 extends JFrame {
 	private JButton btnHome, btnLogout, btnPop, btnRnbSoul, btnHipHop, btnRock, btnJazz, btnKpop, btnArtists, btnAlbums,
 			btnSongs, btnAllPlaylists, btnFavoriteSongs, btnNewPlaylist, btnExit, btnBrowse;
 	private JLabel lblPlaylists;
+	private JButton btnSearch;
 
-	public Browse() {
+	public Browse2() {
 		super("Browse");
 		getContentPane().setBackground(new Color(255, 255, 255));
 		setSize(1280, 720);
@@ -41,19 +40,13 @@ public class Browse extends JFrame {
 		lblMusicLogo.setBounds(22, 10, 158, 64);
 		panel1.add(lblMusicLogo);
 
-		txtSearch = new JTextField();
-		txtSearch.setBorder(new LineBorder(new Color(232, 232, 232), 2, true));
-		txtSearch.setBounds(23, 84, 223, 34);
-		panel1.add(txtSearch);
-		txtSearch.setColumns(10);
-
 		btnHome = new JButton("  Home");
 		btnHome.setContentAreaFilled(false);
 		btnHome.setBorderPainted(false);
 		btnHome.setHorizontalAlignment(SwingConstants.LEFT);
 		btnHome.setFont(new Font("AppleSDGothicNeoM00", Font.PLAIN, 20));
 		btnHome.setIcon(new ImageIcon(Home2.class.getResource("/Images/homelogo.png")));
-		btnHome.setBounds(22, 136, 223, 34);
+		btnHome.setBounds(22, 84, 223, 34);
 		panel1.add(btnHome);
 
 		JLabel lblLibrary = new JLabel("Library");
@@ -133,13 +126,22 @@ public class Browse extends JFrame {
 		panel1.add(btnExit);
 		
 		btnBrowse = new JButton("  Browse");
-		btnBrowse.setIcon(new ImageIcon(Home2.class.getResource("/Images/search.png")));
+		btnBrowse.setIcon(new ImageIcon(Browse2.class.getResource("/Images/browse.png")));
 		btnBrowse.setHorizontalAlignment(SwingConstants.LEFT);
 		btnBrowse.setFont(new Font("AppleSDGothicNeoM00", Font.PLAIN, 20));
 		btnBrowse.setContentAreaFilled(false);
 		btnBrowse.setBorderPainted(false);
-		btnBrowse.setBounds(23, 180, 223, 34);
+		btnBrowse.setBounds(22, 128, 223, 34);
 		panel1.add(btnBrowse);
+		
+		btnSearch = new JButton("  Search");
+		btnSearch.setIcon(new ImageIcon(Browse2.class.getResource("/Images/search.png")));
+		btnSearch.setHorizontalAlignment(SwingConstants.LEFT);
+		btnSearch.setFont(new Font("AppleSDGothicNeoM00", Font.PLAIN, 20));
+		btnSearch.setContentAreaFilled(false);
+		btnSearch.setBorderPainted(false);
+		btnSearch.setBounds(22, 172, 223, 34);
+		panel1.add(btnSearch);
 
 		JPanel panel2 = new JPanel();
 		panel2.setBorder(new LineBorder(new Color(232, 232, 232), 2));
@@ -172,7 +174,7 @@ public class Browse extends JFrame {
 		panel3.add(lblBrowseCategories);
 
 		btnPop = new JButton(" Pop");
-		btnPop.setFont(new Font("AppleSDGothicNeoEB00", Font.PLAIN, 40));
+		btnPop.setFont(new Font("AppleSDGothicNeoH00", Font.PLAIN, 40));
 		btnPop.setForeground(new Color(255, 255, 255));
 		btnPop.setBackground(new Color(60, 179, 113));
 		btnPop.setBorderPainted(false);
@@ -181,7 +183,7 @@ public class Browse extends JFrame {
 		panel3.add(btnPop);
 
 		btnRnbSoul = new JButton("R&B/Soul");
-		btnRnbSoul.setFont(new Font("AppleSDGothicNeoEB00", Font.PLAIN, 40));
+		btnRnbSoul.setFont(new Font("AppleSDGothicNeoH00", Font.PLAIN, 40));
 		btnRnbSoul.setForeground(new Color(255, 255, 255));
 		btnRnbSoul.setBackground(new Color(135, 206, 235));
 		btnRnbSoul.setBorder(new EmptyBorder(0, 0, 0, 0));
@@ -191,7 +193,7 @@ public class Browse extends JFrame {
 
 		btnHipHop = new JButton("Hip-Hop");
 		btnHipHop.setForeground(new Color(255, 255, 255));
-		btnHipHop.setFont(new Font("AppleSDGothicNeoEB00", Font.PLAIN, 40));
+		btnHipHop.setFont(new Font("AppleSDGothicNeoH00", Font.PLAIN, 40));
 		btnHipHop.setBackground(new Color(100, 149, 237));
 		btnHipHop.setBorderPainted(false);
 		btnHipHop.setBounds(22, 243, 462, 145);
@@ -199,7 +201,7 @@ public class Browse extends JFrame {
 
 		btnRock = new JButton("Rock");
 		btnRock.setForeground(new Color(255, 255, 255));
-		btnRock.setFont(new Font("AppleSDGothicNeoEB00", Font.PLAIN, 40));
+		btnRock.setFont(new Font("AppleSDGothicNeoH00", Font.PLAIN, 40));
 		btnRock.setBackground(new Color(204, 204, 255));
 		btnRock.setBorderPainted(false);
 		btnRock.setBounds(509, 243, 462, 145);
@@ -207,14 +209,14 @@ public class Browse extends JFrame {
 
 		btnJazz = new JButton("Jazz");
 		btnJazz.setForeground(new Color(255, 255, 255));
-		btnJazz.setFont(new Font("AppleSDGothicNeoEB00", Font.PLAIN, 40));
+		btnJazz.setFont(new Font("AppleSDGothicNeoH00", Font.PLAIN, 40));
 		btnJazz.setBackground(new Color(221, 160, 221));
 		btnJazz.setBorderPainted(false);
 		btnJazz.setBounds(22, 414, 462, 145);
 		panel3.add(btnJazz);
 
 		btnKpop = new JButton("K-Pop");
-		btnKpop.setFont(new Font("AppleSDGothicNeoEB00", Font.BOLD, 40));
+		btnKpop.setFont(new Font("AppleSDGothicNeoH00", Font.PLAIN, 40));
 		btnKpop.setForeground(new Color(255, 255, 255));
 		btnKpop.setBackground(new Color(102, 204, 153));
 		btnKpop.setBorderPainted(false);
@@ -223,7 +225,7 @@ public class Browse extends JFrame {
 
 		setVisible(true);
 
-		// 로그인 상태에서 홈 버튼 클릭 시 처리
+		// 홈 버튼 클릭 시 처리
 		btnHome.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
@@ -231,33 +233,49 @@ public class Browse extends JFrame {
 			}
 		});
 		
-		// 로그인 상태에서 브라우저 클릭
+		// 브라우저 클릭
 		btnBrowse.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				new Browse();
-			}
-		});
-
-		// 로그인 상태에서 서치 텍스트필드에 내용 입력 후 엔터 시 처리
-		txtSearch.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				dispose();
-				new Search2();
+				new Browse2();
 			}
 		});
 		
-		// 로그인 상태에서 장르 pop 버튼
+		// pop 버튼
 		btnPop.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				new Pop();
+				new Pop2();
 			}
 		});
+		
+		// rnbsoul 버튼
+		btnRnbSoul.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				new RnbSoul2();
+			}
+		});
+		
+		// hiphop 버튼
+		btnHipHop.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				new HipHop2();
+			}
+		});
+		
+		// rock 버튼
+		btnRock.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				new Rock2();
+			}
+		});
+		
+		// jazz 버튼
 
-
-		// 로그인 상태에서 아티스트 버튼 클릭
+		// 아티스트 버튼 클릭
 		btnArtists.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
@@ -265,7 +283,7 @@ public class Browse extends JFrame {
 			}
 		});
 
-		// 로그인 상태에서 로그아웃 버튼 클릭
+		// 로그아웃 버튼 클릭
 		btnLogout.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -274,10 +292,18 @@ public class Browse extends JFrame {
 			}
 		});
 		
-		// 로그인 상태에서 종료 버튼 클릭
+		// 종료 버튼 클릭
 		btnExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.exit(0);
+			}
+		});
+		
+		// search 버튼
+		btnSearch.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				new Search2();
 			}
 		});
 

@@ -180,9 +180,6 @@ public class SignUp extends JFrame {
 			}
 		});
 		
-		
-		
-		
 		// 가입하기 버튼
 		btnSignUp.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

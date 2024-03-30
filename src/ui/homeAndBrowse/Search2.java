@@ -9,8 +9,6 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 import javax.swing.border.*;
 
-import ui.browseCategories.*;
-
 public class Search2 extends JFrame {
 	private JTextField txtSearch;
 	private JButton btnHome, btnLogout, btnArtists, btnAlbums, btnSongs, btnAllPlaylists, btnFavoriteSongs,
@@ -182,7 +180,7 @@ public class Search2 extends JFrame {
 		scrollPane.setViewportView(table);
 		
 		btnAddToMyPlaylist = new JButton("");
-		btnAddToMyPlaylist.setIcon(new ImageIcon(Pop.class.getResource("/Images/addToPlaylist.png")));
+		btnAddToMyPlaylist.setIcon(new ImageIcon(Pop1.class.getResource("/Images/addToPlaylist.png")));
 		btnAddToMyPlaylist.setOpaque(false);
 		btnAddToMyPlaylist.setForeground(Color.BLACK);
 		btnAddToMyPlaylist.setFont(new Font("AppleSDGothicNeoM00", Font.PLAIN, 20));
@@ -194,7 +192,7 @@ public class Search2 extends JFrame {
 		panel3.add(btnAddToMyPlaylist);
 
 		btnAddToFavoriteSongs = new JButton("");
-		btnAddToFavoriteSongs.setIcon(new ImageIcon(Pop.class.getResource("/Images/favoriteSongsHeartVer.png")));
+		btnAddToFavoriteSongs.setIcon(new ImageIcon(Pop1.class.getResource("/Images/favoriteSongsHeartVer.png")));
 		btnAddToFavoriteSongs.setOpaque(false);
 		btnAddToFavoriteSongs.setForeground(Color.BLACK);
 		btnAddToFavoriteSongs.setFont(new Font("AppleSDGothicNeoM00", Font.PLAIN, 20));

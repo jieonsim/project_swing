@@ -3,7 +3,7 @@ show tables;
 DESC songs;
 DROP TABLE users;
 DELETE FROM users;
-SELECT * FROM songs;
+SELECT * FROM albums;
 
 -- Users (사용자)
 CREATE TABLE users (
@@ -22,7 +22,7 @@ CREATE TABLE artists (
 	imagePath VARCHAR(255)
 );
 
-INSERT INTO artists VALUES (DEFAULT, 'Ariana Grande', null);
+INSERT INTO artists VALUES (DEFAULT, '혁오', null); --4
 
 
 -- Albums (앨범)
@@ -37,7 +37,13 @@ CREATE TABLE albums (
 	FOREIGN KEY (genreIDX) REFERENCES genres (genreIDX)
 );
 
-INSERT INTO albums (artistIDX, genreIDX, albumName, releaseDate, coverPath) VALUES 
+INSERT INTO albums (artistIDX, genreIDX, albumName, releaseDate, coverPath) 
+VALUES 
+(4, 4, '23', '2017-04-24', null),
+(4, 4, '사랑으로', '2020-01-30', null),
+(4, 4, '24 : How to find true love and happiness - EP', '2020-01-30', null);
+
+UPDATE albums SET albumName = 'SOS' WHERE artistIDX = 2 AND albumName = 'SZA' AND releaseDate = '2022-12-09';
 
 
 -- Songs (노래)
@@ -52,6 +58,16 @@ CREATE TABLE songs (
 );
 ALTER TABLE songs DROP COLUMN duration;
 
+INSERT INTO songs (albumIDX, artistIDX, songName) VALUES
+(13, 4, 'Graduation'),
+(13, 4, '하늘나라'),
+(13, 4, 'LOVE YA!'),
+(13, 4, 'Citizen Kane'),
+(13, 4, 'Gang Gang Schiele'),
+(13, 4, 'Goodbye Seoul');
+
+
+INSERT INTO songs (albumIDX, artistIDX, songName) VALUES (7, 2, 'I Hate U');
 
 
 -- Genres (장르)
@@ -61,12 +77,12 @@ CREATE TABLE genres (
 	imagePath VARCHAR(255)
 );
 
-INSERT INTO genres (genreName, imagePath) VALUES ('pop', null);
-INSERT INTO genres (genreName, imagePath) VALUES ('rnbSoul', null);
-INSERT INTO genres (genreName, imagePath) VALUES ('hiphop', null);
-INSERT INTO genres (genreName, imagePath) VALUES ('rock', null);
-INSERT INTO genres (genreName, imagePath) VALUES ('jazz', null);
-INSERT INTO genres (genreName, imagePath) VALUES ('kpop', null);
+INSERT INTO genres (genreName, imagePath) VALUES ('pop', null); --1
+INSERT INTO genres (genreName, imagePath) VALUES ('rnbSoul', null); --2
+INSERT INTO genres (genreName, imagePath) VALUES ('hiphop', null); --3
+INSERT INTO genres (genreName, imagePath) VALUES ('rock', null); --4
+INSERT INTO genres (genreName, imagePath) VALUES ('jazz', null); --5
+INSERT INTO genres (genreName, imagePath) VALUES ('kpop', null); --6
 
 
 -- SongGenres (노래 장르)
