@@ -1,9 +1,15 @@
 show tables;
 
-DESC songs;
-DROP TABLE users;
-DELETE FROM users;
+DESC albums;
+--DROP TABLE users;
+--DELETE FROM users;
+SELECT * FROM songs;
 SELECT * FROM albums;
+
+SELECT * FROM songs WHERE aritstIDX = 2;
+SELECT * FROM playlists WHERE userIDX = 11;
+SELECT * FROM playlists WHERE userIDX = 10 AND isFavorite = TRUE;
+
 
 -- Users (사용자)
 CREATE TABLE users (
@@ -22,7 +28,12 @@ CREATE TABLE artists (
 	imagePath VARCHAR(255)
 );
 
-INSERT INTO artists VALUES (DEFAULT, '혁오', null); --4
+UPDATE artists SET imagePath = 'ariana.jpg' WHERE artistIDX = 1;
+UPDATE artists SET imagePath = 'sza.jpg' WHERE artistIDX = 2;
+UPDATE artists SET imagePath = 'postmalone.jpg' WHERE artistIDX = 3;
+UPDATE artists SET imagePath = 'hyukoh.jpg' WHERE artistIDX = 4;
+UPDATE artists SET imagePath = 'newjeans.jpg' WHERE artistIDX = 6;
+UPDATE artists SET imagePath = 'norajones.jpg' WHERE artistIDX = 7;
 
 
 -- Albums (앨범)
@@ -37,11 +48,26 @@ CREATE TABLE albums (
 	FOREIGN KEY (genreIDX) REFERENCES genres (genreIDX)
 );
 
+
+UPDATE albums SET coverPath = 'sos.jpg' WHERE albumIDX = 7;
+UPDATE albums SET coverPath = 'saturn.jpg' WHERE albumIDX = 8;
+UPDATE albums SET coverPath = 'beerbong.jpg' WHERE albumIDX = 9;
+UPDATE albums SET coverPath = 'hollywood.jpg' WHERE albumIDX = 10;
+UPDATE albums SET coverPath = '23.jpg' WHERE albumIDX = 11;
+UPDATE albums SET coverPath = 'love.jpg' WHERE albumIDX = 12;
+UPDATE albums SET coverPath = '24.jpg' WHERE albumIDX = 13;
+UPDATE albums SET coverPath = 'getup.jpg' WHERE albumIDX = 14;
+UPDATE albums SET coverPath = 'newjeans.jpg' WHERE albumIDX = 15;
+UPDATE albums SET coverPath = 'omg.jpg' WHERE albumIDX = 16;
+UPDATE albums SET coverPath = 'comeaway.jpg' WHERE albumIDX = 17;
+UPDATE albums SET coverPath = 'vision.jpg' WHERE albumIDX = 18;
+
+
+
 INSERT INTO albums (artistIDX, genreIDX, albumName, releaseDate, coverPath) 
 VALUES 
-(4, 4, '23', '2017-04-24', null),
-(4, 4, '사랑으로', '2020-01-30', null),
-(4, 4, '24 : How to find true love and happiness - EP', '2020-01-30', null);
+(7, 5, 'Come Away with Me (Remastered)', '2002-02-26', null),
+(7, 5, 'Visions', '2024-03-08', null);
 
 UPDATE albums SET albumName = 'SOS' WHERE artistIDX = 2 AND albumName = 'SZA' AND releaseDate = '2022-12-09';
 
@@ -52,23 +78,25 @@ CREATE TABLE songs (
     albumIDX INT NOT NULL,
     artistIDX INT NOT NULL,
     songName VARCHAR(100) NOT NULL,
-	duration INT NOT NULL, -- 삭제
     FOREIGN KEY (albumIDX) REFERENCES albums(albumIDX),
     FOREIGN KEY (artistIDX) REFERENCES artists(artistIDX)
 );
-ALTER TABLE songs DROP COLUMN duration;
+ALTER TABLE songs DROP COLUMN duration; -- 노래길이 삭제
 
 INSERT INTO songs (albumIDX, artistIDX, songName) VALUES
-(13, 4, 'Graduation'),
-(13, 4, '하늘나라'),
-(13, 4, 'LOVE YA!'),
-(13, 4, 'Citizen Kane'),
-(13, 4, 'Gang Gang Schiele'),
-(13, 4, 'Goodbye Seoul');
+(17, 7, 'Don''t know Why'),
+(17, 7, 'Seven Years'),
+(17, 7, 'Cold Cold Heart'),
+(17, 7, 'Feelin'' the Same Way'),
+(17, 7, 'Come Away with Me'),
+(17, 7, 'Shoot the Moon'),
+(17, 7, 'Turn Me On'),
+(17, 7, 'Lonestar');
 
 
 INSERT INTO songs (albumIDX, artistIDX, songName) VALUES (7, 2, 'I Hate U');
 
+UPDATE songs SET songName = 'don''t wanna break up again' WHERE songIDX = 3;
 
 -- Genres (장르)
 CREATE TABLE genres (
@@ -85,27 +113,6 @@ INSERT INTO genres (genreName, imagePath) VALUES ('jazz', null); --5
 INSERT INTO genres (genreName, imagePath) VALUES ('kpop', null); --6
 
 
--- SongGenres (노래 장르)
-CREATE TABLE songGenres (
-	songIDX INT NOT NULL,
-	genreIDX INT NOT NULL,
-	FOREIGN KEY (songIDX) REFERENCES songs(songIDX),
-	FOREIGN KEY (genreIDX) REFERENCES genres(genreIDX)
-);
-
--- UserLibrary (사용자 라이브러리)
-CREATE TABLE userLibrary (
-	userIDX INT,
-	albumIDX INT,
-	artistIDX INT,
-	songIDX INT,
-	addDate DATETIME NOT NULL,
-	FOREIGN KEY (userIDX) REFERENCES users(userIDX),
-	FOREIGN KEY (albumIDX) REFERENCES albums(albumIDX),
-	FOREIGN KEY (artistIDX) REFERENCES artists(artistIDX),
-	FOREIGN KEY (songIDX) REFERENCES songs(songIDX)
-);
-
 -- Playlists (플레이리스트)
 CREATE TABLE playlists (
 	playlistIDX INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -115,11 +122,19 @@ CREATE TABLE playlists (
 	FOREIGN KEY (userIDX) REFERENCES users(userIDX)
 );
 
+/*
+ 	playlists 테이블에 playlistCoverImagePath 컬럼을 추가
+ 	사용자가 업로드한 플레이리스트의 커버 이미지 파일 경로를 저장하는 데 사용
+ */
+ALTER TABLE playlists
+ADD COLUMN playlistCoverImagePath VARCHAR(255);
+
+
 -- PlaylistSongs (플레이리스트 노래)
 CREATE TABLE playlistSongs (
 	playlistIDX INT NOT NULL,
 	songIDX INT NOT NULL,
-	addDate DATETIME NOT NULL,
+	addDate DATETIME DEFAULT NOW(),
 	FOREIGN KEY (playlistIDX) REFERENCES playlists(playlistIDX),
 	FOREIGN KEY (songIDX) REFERENCES songs(songIDX)
 );

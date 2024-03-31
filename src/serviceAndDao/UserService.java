@@ -2,7 +2,7 @@ package serviceAndDao;
 
 import javax.swing.JOptionPane;
 
-import vo.*;
+import uiAndVO.home.UserVO;
 
 public class UserService {
 	private UserDAO userDAO = new UserDAO();
@@ -38,19 +38,29 @@ public class UserService {
 		}
 
 		// 모든 검증을 통과한 경우, 데이터베이스에 사용자 정보 저장
-		int result = userDAO.setSignUp(userID, password, userName, phoneNumber);
-
-		return result > 0;
+		int userIDX = userDAO.setSignUp(userID, password, userName, phoneNumber);
+		
+		// 사용자 정보 저장 성공 시, 'Favorite Songs' 플레이리스트 자동 생성
+		if (userIDX > 0) {
+			boolean playlistCreated = userDAO.createFavoritePlaylist(userIDX);
+			if(!playlistCreated) {
+				JOptionPane.showMessageDialog(null, "Favorite Songs Playlists 생성 실패");
+				return false;
+			}
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	// 로그인
-	public boolean login(String userID, String password) { // 로그인 시 회원이 입력한 아이디, 비밀번호 전달받기
+	public UserVO login(String userID, String password) { // 로그인 시 회원이 입력한 아이디, 비밀번호 전달받기
 		UserVO userVO = userDAO.existsByUser(userID); // 계정이 존재하는지 먼저 확인 후
 		if (userVO != null && userVO.getPassword().equals(password)) {
 			// 계정이 존재하고 비밀번호가 일치하는 경우
-			return true; // 로그인 성공
+			return userVO; // 로그인 성공
 		} else {
-			return false; // 로그인 실패
+			return null; // 로그인 실패
 		}
 	}
 
