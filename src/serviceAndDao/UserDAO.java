@@ -47,22 +47,22 @@ public class UserDAO extends DBConn {
 			pstmt.setString(4, phoneNumber);
 
 			int affectedRows = pstmt.executeUpdate();
-			
+
 			// INSERT 연산이 성공했다면 생성된 키(userIDX)를 가져온다.
-	        if (affectedRows > 0) {
-	            try (ResultSet generatedKeys = pstmt.getGeneratedKeys()) {
-	                if (generatedKeys.next()) {
-	                    userIDX = generatedKeys.getInt(1); // 생성된 userIDX를 가져옴
-	                }
-	            }
-	        }
-	    } catch (SQLException e) {
-	        System.out.println("SQL 오류 : " + e.getMessage());
-	        userIDX = -1; // 오류 발생 시 userIDX 값을 -1로 설정하여 실패를 나타냄
-	    } finally {
-	        pstmtClose();
-	    }
-	    return userIDX; // 성공 시 생성된 userIDX 반환, 실패 시 -1 반환
+			if (affectedRows > 0) {
+				try (ResultSet generatedKeys = pstmt.getGeneratedKeys()) {
+					if (generatedKeys.next()) {
+						userIDX = generatedKeys.getInt(1); // 생성된 userIDX를 가져옴
+					}
+				}
+			}
+		} catch (SQLException e) {
+			System.out.println("SQL 오류 : " + e.getMessage());
+			userIDX = -1; // 오류 발생 시 userIDX 값을 -1로 설정하여 실패를 나타냄
+		} finally {
+			pstmtClose();
+		}
+		return userIDX; // 성공 시 생성된 userIDX 반환, 실패 시 -1 반환
 	}
 
 	// 이름 + 전화번호 조합으로 아이디 찾기
@@ -142,5 +142,24 @@ public class UserDAO extends DBConn {
 		} finally {
 			pstmtClose();
 		}
+	}
+
+	public String getUserNameByIDX(int userIDX) {
+		String userName = null;
+		try {
+			// 연결과 쿼리 준비
+			sql = "SELECT userName FROM users WHERE userIDX = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, userIDX);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				userName = rs.getString("userName");
+			}
+		} catch (SQLException e) {
+			System.out.println("SQL 오류 : " + e.getMessage());
+		} finally {
+			rsClose();
+		}
+		return userName;
 	}
 }

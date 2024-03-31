@@ -10,6 +10,7 @@ import javax.swing.*;
 import javax.swing.border.*;
 
 import serviceAndDao.MusicService;
+import serviceAndDao.UserDAO;
 import uiAndVO.browse.Browse2;
 import uiAndVO.library.Albums;
 import uiAndVO.library.Artists;
@@ -19,14 +20,17 @@ import uiAndVO.search.Search2;
 import util.SessionManager;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
+import java.util.Random;
 
 public class Home2 extends JFrame {
 	private JButton btnHome, btnLogout, btnArtists, btnAlbums, btnSongs, btnMyPlaylists, btnFavoriteSongs,
 			btnNewPlaylist, btnExit, btnBrowse, btnSearch;
-	private JLabel lblPlaylists;
+	private JLabel lblPlaylists, lblWelcome1, lblWelcome2;
 
 	MusicService musicService = new MusicService();
-
+	private JLabel lblquote;
+	
 	public Home2() {
 		super("Swing Music");
 		getContentPane().setBackground(new Color(255, 255, 255));
@@ -178,13 +182,29 @@ public class Home2 extends JFrame {
 		getContentPane().add(panel3);
 		panel3.setLayout(null);
 
-		JTextArea textArea = new JTextArea();
-		textArea.setFont(new Font("AppleSDGothicNeoL00", Font.PLAIN, 20));
-		textArea.setText(
-				"로그인 후 홈화면 뭐할지고민중\r\n\r\n아이디어\r\n1. Top Picks for You\r\n2. Recently added\r\n3. Music by Mood(Feel Good, Party, Chill, Fitness)\r\n\r\n환영합니다!\r\n즐겨보세요....");
-		textArea.setBounds(123, 66, 713, 254);
-		panel3.add(textArea);
+		lblWelcome1 = new JLabel("");
+		lblWelcome1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblWelcome1.setFont(new Font("AppleSDGothicNeoM00", Font.PLAIN, 50));
+		lblWelcome1.setBounds(202, 128, 601, 94);
+		// 환영 문구 사용자 이름 업데이트
+		updateWelcomeMessage();
+		panel3.add(lblWelcome1);
 
+		lblWelcome2 = new JLabel("스윙뮤직이 당신의 하루에 멜로디를 더해드릴게요.");
+		lblWelcome2.setHorizontalAlignment(SwingConstants.CENTER);
+		lblWelcome2.setFont(new Font("AppleSDGothicNeoM00", Font.PLAIN, 20));
+		lblWelcome2.setBounds(286, 232, 434, 49);
+		panel3.add(lblWelcome2);
+		
+		lblquote = new JLabel("New label");
+		lblquote.setForeground(new Color(128, 128, 128));
+		lblquote.setHorizontalAlignment(SwingConstants.CENTER);
+		lblquote.setFont(new Font("AppleSDGothicNeoM00", Font.PLAIN, 15));
+		lblquote.setBounds(194, 353, 617, 49);
+		String quote = getRandomMusicQuote();
+		lblquote.setText(quote);
+		panel3.add(lblquote);
+		
 		// ----------------------------------------------------------
 
 		// home 마우스
@@ -237,7 +257,7 @@ public class Home2 extends JFrame {
 				new Search2();
 			}
 		});
-		
+
 		// all playlists 마우스
 		btnMyPlaylists.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -245,7 +265,7 @@ public class Home2 extends JFrame {
 				new MyPlaylists();
 			}
 		});
-		
+
 		// all playlists 키보드
 		btnMyPlaylists.addKeyListener(new KeyAdapter() {
 			@Override
@@ -271,14 +291,14 @@ public class Home2 extends JFrame {
 				new FavoriteSongs();
 			}
 		});
-		
+
 		// new playlist 마우스
 		btnNewPlaylist.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				createNewPlaylist();
 			}
 		});
-		
+
 		// new playlist 키보드
 		btnNewPlaylist.addKeyListener(new KeyAdapter() {
 			@Override
@@ -286,7 +306,7 @@ public class Home2 extends JFrame {
 				createNewPlaylist();
 			}
 		});
-		
+
 		// exit 마우스
 		btnExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -301,7 +321,7 @@ public class Home2 extends JFrame {
 				System.exit(0);
 			}
 		});
-		
+
 		// logout 마우스
 		btnLogout.addActionListener(new ActionListener() {
 			@Override
@@ -319,7 +339,7 @@ public class Home2 extends JFrame {
 				new Home1();
 			}
 		});
-		
+
 		// artists 마우스
 		btnArtists.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -327,7 +347,7 @@ public class Home2 extends JFrame {
 				new Artists();
 			}
 		});
-		
+
 		// album
 		btnAlbums.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -354,4 +374,35 @@ public class Home2 extends JFrame {
 			}
 		}
 	}
+
+	// 홈화면 환영 문구 메소드
+	private void updateWelcomeMessage() {
+		// session manager 에서 현재 로그인한 사용자 idx 가져오기
+		int currentUserIDX = SessionManager.getCurrentUserIDX();
+		// userDAO통해 사용자 이름 조회
+		UserDAO userDAO = new UserDAO();
+		String userName = userDAO.getUserNameByIDX(currentUserIDX);
+		// textlabel에 환영 메시지 설정
+		if (userName != null) {
+			lblWelcome1.setText("환영합니다, " + userName + "님!");
+		}
+	}
+	
+	// 랜덤 명언 출력
+	private static String getRandomMusicQuote() {
+        ArrayList<String> quotes = new ArrayList<>();
+        quotes.add("음악은 침묵의 잔을 채우는 와인이다. - 로버트 프립 -");
+        quotes.add("음악은 인류가 만든 가장 완벽한 예술이다. - 자크 바락 -");
+        quotes.add("음악은 영혼을 우주로, 날개를 상상력으로, 마음을 자유로 이끈다. - 플라톤 -");
+        quotes.add("음악은 가장 강력한 예술이자 치유의 힘을 지닌다. - 마리아 바이드 -");
+        quotes.add("음악은 세계를 바꿀 수 있는 힘을 가지고 있다. - 루더 반 베토벤 -");
+        quotes.add("음악은 우리가 말로 표현할 수 없는 감정을 전달하는 방법이다. - 리오나르도 다 빈치 -");
+        quotes.add("음악은 우리의 생각을 확장시키고 우리를 더 깊이 생각하게 한다. - 피터 새거드 -");
+        quotes.add("음악은 우리의 마음을 깊이 탐구하는 수단이다. - 헨리 데이비드 소로 -");
+
+        Random random = new Random();
+        int index = random.nextInt(quotes.size());
+
+        return quotes.get(index);
+    }
 }
