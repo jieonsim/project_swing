@@ -210,8 +210,10 @@ public class Albums extends JFrame {
 		scrollPane.setBounds(43, 69, 907, 483);
 		panel3.add(scrollPane, BorderLayout.CENTER);
 
+		// --------- 테이블 설계 --------------
+		
 		Vector<String> columnNames = new Vector<>();
-		columnNames.add("Album No");
+		columnNames.add("No");
 		columnNames.add("Cover");
 		columnNames.add("Album Name");
 		columnNames.add("Artist Name");
@@ -247,16 +249,17 @@ public class Albums extends JFrame {
 			};
 
 			table = new JTable(dtm);
-			
+
+			// 0번째 열(albumIDX) 크기 줄이기
+			table.getColumnModel().getColumn(0).setMaxWidth(30);
 			// 이미지를 포함하는 컬럼을 제외하고 나머지 컬럼 중앙 정렬
 		    dtcr = new DefaultTableCellRenderer();
 		    dtcr.setHorizontalAlignment(SwingConstants.CENTER);
 		    table.getColumnModel().getColumn(0).setCellRenderer(dtcr);
 		    table.getColumnModel().getColumn(2).setCellRenderer(dtcr);
 		    table.getColumnModel().getColumn(3).setCellRenderer(dtcr);
-//		    table.getColumnModel().getColumn(1).setCellRenderer(dtcr);
-		    
-		    table.setRowHeight(100); // 이미지 컬럼 높이 조정
+		    // 이미지 컬럼 높이 조정
+		    table.setRowHeight(100);
 		    
 			scrollPane.setViewportView(table);
 		} else {

@@ -27,8 +27,8 @@ import uiAndVO.search.Search1;
 
 public class HipHop1 extends JFrame {
 	private JButton btnHome, btnLogin, btnExit, btnBrowse, btnSearch;
-	private JLabel lblAllTracks, lblEssentialAlbums, lblNewReleaseArtistName2, lblNewReleaseAlbumName3,
-			lblNewReleaseArtistName3, lblEssentialAlbum2, lblEssentialAlbumName2, lblEssentialAlbumArtistName2,
+	private JLabel lblAllTracks, lblEssentialAlbums, lblNewReleaseArtistName2,
+			lblNewReleaseAlbumName3, lblNewReleaseArtistName3, lblEssentialAlbum2, lblEssentialAlbumName2, lblEssentialAlbumArtistName2,
 			lblEssentialAlbum3, lblEssentialAlbumName3, lblEssentialAlbumArtistName3;
 	private JTable tableAllTrack;
 
@@ -81,7 +81,7 @@ public class HipHop1 extends JFrame {
 		btnExit.setBorderPainted(false);
 		btnExit.setBounds(22, 600, 223, 34);
 		panel1.add(btnExit);
-
+		
 		btnSearch = new JButton("  Search");
 		btnSearch.setIcon(new ImageIcon(HipHop1.class.getResource("/Images/search.png")));
 		btnSearch.setHorizontalAlignment(SwingConstants.LEFT);
@@ -110,18 +110,13 @@ public class HipHop1 extends JFrame {
 		btnLogin.setBounds(836, 21, 141, 34);
 		panel2.add(btnLogin);
 
-		JLabel lblPop = new JLabel("Pop");
-		lblPop.setBounds(30, 10, 225, 53);
-		panel2.add(lblPop);
-		lblPop.setFont(new Font("AppleSDGothicNeoB00", Font.PLAIN, 45));
-
 		JPanel panel3 = new JPanel();
 		panel3.setBackground(new Color(255, 255, 255));
 		panel3.setBounds(270, 76, 1006, 610);
 		getContentPane().add(panel3);
 		panel3.setLayout(null);
 
-		lblAllTracks = new JLabel("All Tracks > ");
+		lblAllTracks = new JLabel("Hip-Hop All Tracks > ");
 		lblAllTracks.setFont(new Font("AppleSDGothicNeoM00", Font.PLAIN, 15));
 		lblAllTracks.setBounds(44, 38, 137, 27);
 		panel3.add(lblAllTracks);
@@ -129,25 +124,25 @@ public class HipHop1 extends JFrame {
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(43, 75, 480, 473);
 		panel3.add(scrollPane);
-
+		
 		// ------------ 테이블 설계 ---------------
-
+		
 		Vector<String> columnNames = new Vector<>();
 		columnNames.add("No");
 		columnNames.add("Song");
 		columnNames.add("Artist");
 		columnNames.add("Album");
-
+		
 		MusicService musicService = new MusicService();
 		Vector<Vector<Object>> data = musicService.getTracksByGenres("hiphop");
-
+		
 		tableAllTrack = new JTable(data, columnNames);
 		tableAllTrack.setFont(new Font("AppleSDGothicNeoR00", Font.PLAIN, 12));
 		scrollPane.setViewportView(tableAllTrack);
-
+		
 		tableAllTrack.getColumnModel().getColumn(0).setMaxWidth(50);
 		tableAllTrack.getTableHeader().setReorderingAllowed(false);
-
+		
 		// 전체셀 가운데 정렬
 		DefaultTableCellRenderer dtcr = new DefaultTableCellRenderer();
 		dtcr.setHorizontalAlignment(SwingConstants.CENTER);
@@ -155,20 +150,22 @@ public class HipHop1 extends JFrame {
 		for (int i = 0; i < tcm.getColumnCount(); i++) {
 			tcm.getColumn(i).setCellRenderer(dtcr);
 		}
-
-		// -----------------------------------------------------
-
+		
+		//-----------------------------------------------------
+		
 		JLabel lblNewReleases = new JLabel("New Releases > ");
 		lblNewReleases.setFont(new Font("AppleSDGothicNeoM00", Font.PLAIN, 15));
 		lblNewReleases.setBounds(557, 42, 156, 27);
 		panel3.add(lblNewReleases);
 
 		JLabel lblNewReleases2 = new JLabel("");
+		lblNewReleases2.setIcon(new ImageIcon(HipHop1.class.getResource("/Images/browse/hiphopNew1.gif")));
 		lblNewReleases2.setBorder(new LineBorder(new Color(0, 0, 0)));
 		lblNewReleases2.setBounds(558, 75, 170, 152);
 		panel3.add(lblNewReleases2);
 
 		JLabel lblNewReleases3 = new JLabel("");
+		lblNewReleases3.setIcon(new ImageIcon(HipHop1.class.getResource("/Images/browse/hiphopNew2.gif")));
 		lblNewReleases3.setBorder(new LineBorder(new Color(0, 0, 0)));
 		lblNewReleases3.setBounds(777, 75, 170, 152);
 		panel3.add(lblNewReleases3);
@@ -178,70 +175,73 @@ public class HipHop1 extends JFrame {
 		lblEssentialAlbums.setBounds(557, 313, 169, 27);
 		panel3.add(lblEssentialAlbums);
 
-		JLabel lblNewReleaseAlbumName2 = new JLabel("Album name");
+		JLabel lblNewReleaseAlbumName2 = new JLabel("Don't Forget To Breathe");
 		lblNewReleaseAlbumName2.setFont(new Font("AppleSDGothicNeoSB00", Font.PLAIN, 14));
 		lblNewReleaseAlbumName2.setBounds(557, 237, 169, 27);
 		panel3.add(lblNewReleaseAlbumName2);
 
-		lblNewReleaseArtistName2 = new JLabel("Artist name");
+		lblNewReleaseArtistName2 = new JLabel("Buddy");
 		lblNewReleaseArtistName2.setForeground(Color.GRAY);
 		lblNewReleaseArtistName2.setFont(new Font("AppleSDGothicNeoSB00", Font.PLAIN, 14));
 		lblNewReleaseArtistName2.setBounds(557, 257, 169, 27);
 		panel3.add(lblNewReleaseArtistName2);
 
-		lblNewReleaseAlbumName3 = new JLabel("Album name");
+		lblNewReleaseAlbumName3 = new JLabel("HAONOAH");
 		lblNewReleaseAlbumName3.setFont(new Font("AppleSDGothicNeoSB00", Font.PLAIN, 14));
 		lblNewReleaseAlbumName3.setBounds(776, 237, 169, 27);
 		panel3.add(lblNewReleaseAlbumName3);
 
-		lblNewReleaseArtistName3 = new JLabel("Artist name");
+		lblNewReleaseArtistName3 = new JLabel("hAON");
 		lblNewReleaseArtistName3.setForeground(Color.GRAY);
 		lblNewReleaseArtistName3.setFont(new Font("AppleSDGothicNeoSB00", Font.PLAIN, 14));
 		lblNewReleaseArtistName3.setBounds(776, 257, 169, 27);
 		panel3.add(lblNewReleaseArtistName3);
 
 		lblEssentialAlbum2 = new JLabel("");
+		lblEssentialAlbum2.setIcon(new ImageIcon(HipHop1.class.getResource("/Images/browse/hiphopEssential1.gif")));
 		lblEssentialAlbum2.setBorder(new LineBorder(new Color(0, 0, 0)));
 		lblEssentialAlbum2.setBounds(558, 346, 170, 152);
 		panel3.add(lblEssentialAlbum2);
 
-		lblEssentialAlbumName2 = new JLabel("Album name");
+		lblEssentialAlbumName2 = new JLabel("The Black Album");
 		lblEssentialAlbumName2.setFont(new Font("AppleSDGothicNeoSB00", Font.PLAIN, 14));
 		lblEssentialAlbumName2.setBounds(557, 508, 169, 27);
 		panel3.add(lblEssentialAlbumName2);
 
-		lblEssentialAlbumArtistName2 = new JLabel("Artist name");
+		lblEssentialAlbumArtistName2 = new JLabel("JAY-Z");
 		lblEssentialAlbumArtistName2.setForeground(Color.GRAY);
 		lblEssentialAlbumArtistName2.setFont(new Font("AppleSDGothicNeoSB00", Font.PLAIN, 14));
 		lblEssentialAlbumArtistName2.setBounds(557, 528, 169, 27);
 		panel3.add(lblEssentialAlbumArtistName2);
 
 		lblEssentialAlbum3 = new JLabel("");
+		lblEssentialAlbum3.setIcon(new ImageIcon(HipHop1.class.getResource("/Images/browse/hiphopEssential2.gif")));
 		lblEssentialAlbum3.setBorder(new LineBorder(new Color(0, 0, 0)));
 		lblEssentialAlbum3.setBounds(777, 346, 170, 152);
 		panel3.add(lblEssentialAlbum3);
 
-		lblEssentialAlbumName3 = new JLabel("Album name");
+		lblEssentialAlbumName3 = new JLabel("The Carter IV");
 		lblEssentialAlbumName3.setFont(new Font("AppleSDGothicNeoSB00", Font.PLAIN, 14));
 		lblEssentialAlbumName3.setBounds(776, 508, 169, 27);
 		panel3.add(lblEssentialAlbumName3);
 
-		lblEssentialAlbumArtistName3 = new JLabel("Artist name");
+		lblEssentialAlbumArtistName3 = new JLabel("Lil Wayne");
 		lblEssentialAlbumArtistName3.setForeground(Color.GRAY);
 		lblEssentialAlbumArtistName3.setFont(new Font("AppleSDGothicNeoSB00", Font.PLAIN, 14));
 		lblEssentialAlbumArtistName3.setBounds(776, 528, 169, 27);
 		panel3.add(lblEssentialAlbumArtistName3);
+		
 
 //===============================================================================
 
-		// home 버튼
+		//  home 버튼
 		btnHome.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
 				new Home1();
 			}
 		});
-
+		
 		// login 버튼
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -249,14 +249,14 @@ public class HipHop1 extends JFrame {
 				new Login();
 			}
 		});
-
+		
 		// exit 버튼
 		btnExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.exit(0);
 			}
 		});
-
+		
 		// browse 버튼
 		btnBrowse.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -264,7 +264,7 @@ public class HipHop1 extends JFrame {
 				new Browse1();
 			}
 		});
-
+		
 		// search 버튼
 		btnSearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -274,7 +274,7 @@ public class HipHop1 extends JFrame {
 		});
 
 //===========================================================================
-
+		
 		setVisible(true);
 	}
 }

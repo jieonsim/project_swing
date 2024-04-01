@@ -68,14 +68,14 @@ public class FindToID extends JFrame {
 		btnFindToID.setBorder(new LineBorder(new Color(192, 192, 192), 2));
 		btnFindToID.setFont(new Font("AppleSDGothicNeoM00", Font.PLAIN, 17));
 		btnFindToID.setBackground(new Color(232, 232, 232));
-		btnFindToID.setBounds(398, 442, 211, 51);
+		btnFindToID.setBounds(391, 441, 211, 51);
 		panel2.add(btnFindToID);
 
 		btnFindToPassword = new JButton("비밀번호 찾기");
 		btnFindToPassword.setFont(new Font("AppleSDGothicNeoM00", Font.PLAIN, 12));
 		btnFindToPassword.setContentAreaFilled(false);
 		btnFindToPassword.setBorderPainted(false);
-		btnFindToPassword.setBounds(333, 362, 110, 23);
+		btnFindToPassword.setBounds(327, 361, 110, 23);
 		panel2.add(btnFindToPassword);
 
 		lblName = new JLabel("이름");
@@ -94,7 +94,7 @@ public class FindToID extends JFrame {
 		btnTryToLogin.setFont(new Font("AppleSDGothicNeoM00", Font.PLAIN, 12));
 		btnTryToLogin.setContentAreaFilled(false);
 		btnTryToLogin.setBorderPainted(false);
-		btnTryToLogin.setBounds(455, 362, 97, 23);
+		btnTryToLogin.setBounds(449, 361, 97, 23);
 		panel2.add(btnTryToLogin);
 
 		txtPhoneNumber = new JTextField();
@@ -109,18 +109,18 @@ public class FindToID extends JFrame {
 		panel2.add(txtPhoneNumber);
 
 		lblSplit1 = new JLabel("|");
-		lblSplit1.setBounds(447, 367, 17, 15);
+		lblSplit1.setBounds(441, 366, 17, 15);
 		panel2.add(lblSplit1);
 
 		btnSignUp = new JButton("회원가입");
 		btnSignUp.setFont(new Font("AppleSDGothicNeoM00", Font.PLAIN, 12));
 		btnSignUp.setContentAreaFilled(false);
 		btnSignUp.setBorderPainted(false);
-		btnSignUp.setBounds(568, 362, 88, 23);
+		btnSignUp.setBounds(562, 361, 88, 23);
 		panel2.add(btnSignUp);
 
 		lblSplit2 = new JLabel("|");
-		lblSplit2.setBounds(547, 366, 17, 15);
+		lblSplit2.setBounds(541, 365, 17, 15);
 		panel2.add(lblSplit2);
 
 		setVisible(true);

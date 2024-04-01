@@ -185,7 +185,7 @@ public class Home2 extends JFrame {
 		lblWelcome1 = new JLabel("");
 		lblWelcome1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblWelcome1.setFont(new Font("AppleSDGothicNeoM00", Font.PLAIN, 50));
-		lblWelcome1.setBounds(202, 128, 601, 94);
+		lblWelcome1.setBounds(181, 128, 601, 94);
 		// 환영 문구 사용자 이름 업데이트
 		updateWelcomeMessage();
 		panel3.add(lblWelcome1);
@@ -193,14 +193,14 @@ public class Home2 extends JFrame {
 		lblWelcome2 = new JLabel("스윙뮤직이 당신의 하루에 멜로디를 더해드릴게요.");
 		lblWelcome2.setHorizontalAlignment(SwingConstants.CENTER);
 		lblWelcome2.setFont(new Font("AppleSDGothicNeoM00", Font.PLAIN, 20));
-		lblWelcome2.setBounds(286, 232, 434, 49);
+		lblWelcome2.setBounds(265, 232, 434, 49);
 		panel3.add(lblWelcome2);
 		
 		lblquote = new JLabel("New label");
 		lblquote.setForeground(new Color(128, 128, 128));
 		lblquote.setHorizontalAlignment(SwingConstants.CENTER);
 		lblquote.setFont(new Font("AppleSDGothicNeoM00", Font.PLAIN, 15));
-		lblquote.setBounds(194, 353, 617, 49);
+		lblquote.setBounds(173, 353, 617, 49);
 		String quote = getRandomMusicQuote();
 		lblquote.setText(quote);
 		panel3.add(lblquote);

@@ -8,6 +8,7 @@ import java.util.Vector;
 import uiAndVO.library.AlbumVO;
 import uiAndVO.library.ArtistVO;
 import uiAndVO.library.SongVO;
+import uiAndVO.playlists.*;
 
 public class MusicDAO extends DBConn {
 
@@ -519,5 +520,26 @@ public class MusicDAO extends DBConn {
 			rsClose();
 		}
 		return songs;
+	}
+
+	// 사용자 플레이리스트에 커버이미지 업로드를 위해 
+	public PlaylistsVO getUserIdxPlayList(Integer userIDX) {
+		PlaylistsVO vo = new PlaylistsVO();
+		try {
+			sql = "select * from playlists where userIDX = ? order by playlistIDX desc";
+			// favorite songs는 가입과 동시에 만들어지고 사용자화 플레이리스트는 가입 후 추가로 만들 수 있기 때문에 playlistIDX를 뒤에서부터 찾는다
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, userIDX);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				vo.setUserIDX(userIDX);
+				vo.setPlaylistCoverImagePath(rs.getString("playlistCoverImagePath"));
+			}
+		} catch (SQLException e) {
+			System.out.println("SQL 오류 : " + e.getMessage());
+		} finally {
+			rsClose();
+		}
+		return vo;
 	}
 }

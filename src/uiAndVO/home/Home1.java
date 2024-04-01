@@ -91,17 +91,17 @@ public class Home1 extends JFrame {
 		JLabel lblMent1 = new JLabel("음악이 필요할 땐, 스윙뮤직.");
 		lblMent1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblMent1.setFont(new Font("AppleSDGothicNeoM00", Font.PLAIN, 50));
-		lblMent1.setBounds(196, 61, 546, 262);
+		lblMent1.setBounds(193, 150, 546, 80);
 		panel3.add(lblMent1);
 
 		JLabel lblMent2 = new JLabel("지금 바로 로그인 후 즐겨보세요.");
 		lblMent2.setHorizontalAlignment(SwingConstants.CENTER);
 		lblMent2.setFont(new Font("AppleSDGothicNeoM00", Font.PLAIN, 20));
-		lblMent2.setBounds(321, 238, 295, 50);
+		lblMent2.setBounds(318, 237, 295, 50);
 		panel3.add(lblMent2);
 
 		btnLogin = new JButton("시작하기");
-		btnLogin.setBounds(402, 291, 135, 43);
+		btnLogin.setBounds(398, 290, 135, 43);
 		panel3.add(btnLogin);
 		btnLogin.setBorder(new EmptyBorder(0, 0, 0, 0));
 		btnLogin.setBorderPainted(false);
@@ -115,7 +115,7 @@ public class Home1 extends JFrame {
 		lblMent3.setHorizontalAlignment(SwingConstants.CENTER);
 		lblMent3.setForeground(new Color(128, 128, 128));
 		lblMent3.setFont(new Font("AppleSDGothicNeoM00", Font.PLAIN, 15));
-		lblMent3.setBounds(262, 364, 427, 50);
+		lblMent3.setBounds(252, 363, 427, 50);
 		panel3.add(lblMent3);
 
 		// login 버튼
@@ -161,9 +161,5 @@ public class Home1 extends JFrame {
 		
 		setVisible(true);
 
-	}
-	
-	public static void main(String[] args) {
-		new Home1();
 	}
 }

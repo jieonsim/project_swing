@@ -404,7 +404,7 @@ public class Search2 extends JFrame {
 		setVisible(true);
 	}
 
-//============================================
+//===============================================================
 
 	// 새로운 플레이리스트 만들기 메소드
 	private void createNewPlaylist() {
@@ -478,7 +478,7 @@ public class Search2 extends JFrame {
 	    if (success) {
 	        JOptionPane.showMessageDialog(null, "선택한 노래가 플레이리스트에 추가되었습니다.");
 	    } else {
-	        JOptionPane.showMessageDialog(null, "플레이리스트 노래 추가에 실패했습니다. 플레이리스트를 먼저 생성해주세요.");
+	        JOptionPane.showMessageDialog(null, "노래 추가에 실패했습니다. 플레이리스트를 먼저 생성해주세요.");
 	    }
 	}
 

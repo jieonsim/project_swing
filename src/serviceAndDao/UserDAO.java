@@ -24,7 +24,7 @@ public class UserDAO extends DBConn {
 				userVO.setPassword(rs.getString("password"));
 				userVO.setUserName(rs.getString("userName"));
 				userVO.setPhoneNumber(rs.getString("phoneNumber"));
-				userVO.setJoinDate(rs.getString("joinDate"));
+//				userVO.setJoinDate(rs.getString("joinDate"));
 			}
 		} catch (SQLException e) {
 			System.out.println("SQL 오류 : " + e.getMessage());

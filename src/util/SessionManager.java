@@ -1,17 +1,17 @@
 package util;
 
 public class SessionManager {
-    private static Integer currentUserIDX = null; // Store the current user's ID
+    private static Integer currentUserIDX = null; // 현재 사용자 IDX 저장
 
     public static void login(int userIDX) {
-        currentUserIDX = userIDX; // Set the current user's ID upon login
+        currentUserIDX = userIDX; // 로그인 시 현재 사용자 IDX 설정
     }
 
     public static void logout() {
-        currentUserIDX = null; // Clear the user ID upon logout
+        currentUserIDX = null; // 로그아웃 시 사용자 IDX 지우기
     }
 
     public static Integer getCurrentUserIDX() {
-        return currentUserIDX; // Retrieve the current user's ID
+        return currentUserIDX; // 현재 사용자의 IDX 검색
     }
 }

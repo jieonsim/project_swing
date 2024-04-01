@@ -1,45 +1,23 @@
 package uiAndVO.playlists;
 
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Image;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.File;
-import java.util.Vector;
+import java.awt.*;
+import java.awt.event.*;
+import java.awt.image.*;
+import java.io.*;
+import java.util.*;
 
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JFileChooser;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
-import javax.swing.border.EmptyBorder;
-import javax.swing.border.LineBorder;
-import javax.swing.filechooser.FileNameExtensionFilter;
-import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumnModel;
+import javax.imageio.*;
+import javax.swing.*;
+import javax.swing.border.*;
+import javax.swing.filechooser.*;
+import javax.swing.table.*;
 
-import serviceAndDao.MusicDAO;
-import serviceAndDao.MusicService;
-import uiAndVO.browse.Browse2;
-import uiAndVO.home.Home1;
-import uiAndVO.home.Home2;
-import uiAndVO.library.Albums;
-import uiAndVO.library.Artists;
-import uiAndVO.library.Songs;
-import uiAndVO.search.Search2;
-import util.SessionManager;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import serviceAndDao.*;
+import uiAndVO.browse.*;
+import uiAndVO.home.*;
+import uiAndVO.library.*;
+import uiAndVO.search.*;
+import util.*;
 
 public class MyPlaylists extends JFrame {
 	private JButton btnHome, btnLogout, btnArtists, btnAlbums, btnSongs, btnAllPlaylists, btnFavoriteSongs,
@@ -59,6 +37,7 @@ public class MyPlaylists extends JFrame {
 	MusicService musicService = new MusicService();
 	MusicDAO musicDAO = new MusicDAO();
 	private JButton btnUpdatePlaylistName;
+	private JLabel lblMid;
 
 	public MyPlaylists() {
 		super("Swing Music");
@@ -204,6 +183,10 @@ public class MyPlaylists extends JFrame {
 		btnLogout.setForeground(new Color(0, 0, 0));
 		btnLogout.setBounds(836, 21, 141, 34);
 		panel2.add(btnLogout);
+		
+		lblMid = new JLabel("");
+		lblMid.setBounds(746, 21, 83, 25);
+		panel2.add(lblMid);
 
 		JPanel panel3 = new JPanel();
 		panel3.setBackground(new Color(255, 255, 255));
@@ -271,7 +254,7 @@ public class MyPlaylists extends JFrame {
 		JLabel lblHeartCover = new JLabel("");
 		lblHeartCover.setFont(new Font("굴림", Font.PLAIN, 12));
 		lblHeartCover.setHorizontalAlignment(SwingConstants.CENTER);
-		lblHeartCover.setIcon(new ImageIcon("C:\\Users\\jieon\\Downloads\\free-icon-font-heart.png"));
+		lblHeartCover.setIcon(new ImageIcon(MyPlaylists.class.getResource("/Images/heart128.png")));
 		lblHeartCover.setBounds(0, 0, 245, 176);
 		panel3_1.add(lblHeartCover);
 
@@ -285,7 +268,11 @@ public class MyPlaylists extends JFrame {
 		panel3_2.setBounds(43, 297, 245, 176);
 		panel3.add(panel3_2);
 
+		// 사용자가 업로드 했던 플레이리스트 커버 이미지를 업로드 
+		Integer userIDX = SessionManager.getCurrentUserIDX();
+		PlaylistsVO playlistVO = musicDAO.getUserIdxPlayList(userIDX);
 		lblMyCover = new JLabel("");
+		lblMyCover.setIcon(new ImageIcon(playlistVO.getPlaylistCoverImagePath()));
 		lblMyCover.setHorizontalAlignment(SwingConstants.CENTER);
 		lblMyCover.setFont(new Font("굴림", Font.PLAIN, 12));
 		lblMyCover.setBounds(0, 0, 245, 176);
@@ -359,7 +346,6 @@ public class MyPlaylists extends JFrame {
 
 		// ----------------------------------------------------------------------
 
-		// ===============================================
 
 		// 홈 버튼 클릭 시 처리
 		btnHome.addActionListener(new ActionListener() {
@@ -483,7 +469,7 @@ public class MyPlaylists extends JFrame {
 			}
 		});
 
-		// =========================================
+		// ------------------------------------------------------
 
 		setVisible(true);
 	}
@@ -631,6 +617,7 @@ public class MyPlaylists extends JFrame {
 		}
 	}
 
+	// 사용자 만든 플레이리스트의 플레이리스트 이름 생성해주기
 	private void updatePlaylistNameLabel() {
 		Integer userIDX = SessionManager.getCurrentUserIDX();
 		String playlistName = musicService.getPlaylistNameByUserIDX(userIDX);
@@ -676,7 +663,7 @@ public class MyPlaylists extends JFrame {
 
 		// 사용자가 플레이리스트를 가지고 있는지 확인
 		if (!musicDAO.userHasPlaylist(userIDX)) {
-			JOptionPane.showMessageDialog(null, "플레이리스트가 없습니다. 플레이리스트를 만들어주세요.");
+			JOptionPane.showMessageDialog(null, "플레이리스트가 없습니다. 플레이리스트를 먼저 생성해주세요.");
 			return;
 		}
 
@@ -696,9 +683,9 @@ public class MyPlaylists extends JFrame {
 
 	// 사용자 플레이리스트 커버 사진 추가
 	/*
-	 * 1. 이미지 업로드 처리 : 사용자가 이미지 업로드하면 선택한 이미지 파일 경로 가져오기 2. 데이터베이스 업데이트 : 선택한 이미지의
-	 * 경로를 데이터베이스에 업데이트 (updatePlaylistCoverImage 메소드 사용) 3. 라벨에 이미지 표시 : 업로드된 이미지를
-	 * lblMyCover 라벨에 아이콘으로 설정
+	 * 1. 이미지 업로드 처리 : 사용자가 이미지 업로드하면 선택한 이미지 파일 경로 가져오기
+	 * 2. 데이터베이스 업데이트 : 선택한 이미지의 경로를 데이터베이스에 업데이트 (updatePlaylistCoverImage 메소드 사용)
+	 * 3. 라벨에 이미지 표시 : 업로드된 이미지를 lblMyCover 라벨에 아이콘으로 설정
 	 */
 	private void uploadAndSetCoverImage() {
 		chooser = new JFileChooser();
@@ -708,7 +695,7 @@ public class MyPlaylists extends JFrame {
 		int result = chooser.showOpenDialog(null);
 		if (result == JFileChooser.APPROVE_OPTION) {
 			File selectedFile = chooser.getSelectedFile();
-			String filePath = selectedFile.getAbsolutePath();
+			String filePath = selectedFile.getPath();
 
 			Integer userIDX = SessionManager.getCurrentUserIDX();
 			if (userIDX == null) {
@@ -718,16 +705,34 @@ public class MyPlaylists extends JFrame {
 
 			int playlistIDX = musicDAO.getUserNewPlaylistIDX(userIDX);
 			if (playlistIDX == -1) {
-				JOptionPane.showMessageDialog(null, "플레이리스트가 없습니다. 플레이리스트를 만들어주세요.");
+				JOptionPane.showMessageDialog(null, "플레이리스트가 없습니다. 플레이리스트를 먼저 생성해주세요.");
 				return;
 			}
 
 			if (musicDAO.updatePlaylistCoverImage(playlistIDX, filePath)) {
-				ImageIcon icon = new ImageIcon(new ImageIcon(filePath).getImage()
-						.getScaledInstance(lblMyCover.getWidth(), lblMyCover.getHeight(), Image.SCALE_DEFAULT));
-				lblMyCover.setIcon(icon);
-
-				JOptionPane.showMessageDialog(null, "커버 이미지가 업데이트되었습니다.");
+				lblMyCover.setIcon(new ImageIcon(filePath));
+				
+				// 파일 업로드하기
+				try {
+					File imageFile = new File(filePath);		// 업로드 되는 파일의 위치정보+파일명
+					String fileName = filePath.substring(filePath.lastIndexOf("\\")+1);	// 파일명+확장자
+					String extension = filePath.substring(filePath.lastIndexOf(".")+1);	// 확장자
+					
+					// 파일명 중복 방지 처리(난수발생 방법 사용)
+					int rand = ((int) (Math.random() * 1000000)+1);
+					fileName = rand + "_" + fileName;
+					
+					BufferedImage image = ImageIO.read(imageFile);
+					File file = new File("Images/" + fileName);	// 서버에 저장되는 폴더+파일명
+					if(!file.exists()) file.mkdir();	// 폴더가 존재하지않으면 폴더를 만들어준다.
+					
+					ImageIO.write(image, extension, file);	// images를 file로 업로드시켜준다.
+					JOptionPane.showMessageDialog(null, "커버 이미지가 업데이트되었습니다.");
+				
+					musicDAO.updatePlaylistCoverImage(playlistIDX, "Images/"+fileName);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			} else {
 				JOptionPane.showMessageDialog(null, "이미지 업로드에 실패했습니다.");
 			}

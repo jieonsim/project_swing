@@ -110,18 +110,13 @@ public class Kpop1 extends JFrame {
 		btnLogin.setBounds(836, 21, 141, 34);
 		panel2.add(btnLogin);
 
-		JLabel lblPop = new JLabel("Pop");
-		lblPop.setBounds(30, 10, 225, 53);
-		panel2.add(lblPop);
-		lblPop.setFont(new Font("AppleSDGothicNeoB00", Font.PLAIN, 45));
-
 		JPanel panel3 = new JPanel();
 		panel3.setBackground(new Color(255, 255, 255));
 		panel3.setBounds(270, 76, 1006, 610);
 		getContentPane().add(panel3);
 		panel3.setLayout(null);
 
-		lblAllTracks = new JLabel("All Tracks > ");
+		lblAllTracks = new JLabel("K-Pop All Tracks > ");
 		lblAllTracks.setFont(new Font("AppleSDGothicNeoM00", Font.PLAIN, 15));
 		lblAllTracks.setBounds(44, 38, 137, 27);
 		panel3.add(lblAllTracks);
@@ -164,11 +159,13 @@ public class Kpop1 extends JFrame {
 		panel3.add(lblNewReleases);
 
 		JLabel lblNewReleases2 = new JLabel("");
+		lblNewReleases2.setIcon(new ImageIcon(Kpop1.class.getResource("/Images/browse/kpopNew1.gif")));
 		lblNewReleases2.setBorder(new LineBorder(new Color(0, 0, 0)));
 		lblNewReleases2.setBounds(558, 75, 170, 152);
 		panel3.add(lblNewReleases2);
 
 		JLabel lblNewReleases3 = new JLabel("");
+		lblNewReleases3.setIcon(new ImageIcon(Kpop1.class.getResource("/Images/browse/kpopNew2.gif")));
 		lblNewReleases3.setBorder(new LineBorder(new Color(0, 0, 0)));
 		lblNewReleases3.setBounds(777, 75, 170, 152);
 		panel3.add(lblNewReleases3);
@@ -178,55 +175,57 @@ public class Kpop1 extends JFrame {
 		lblEssentialAlbums.setBounds(557, 313, 169, 27);
 		panel3.add(lblEssentialAlbums);
 
-		JLabel lblNewReleaseAlbumName2 = new JLabel("Album name");
+		JLabel lblNewReleaseAlbumName2 = new JLabel("DREAM()SCAPE - EP");
 		lblNewReleaseAlbumName2.setFont(new Font("AppleSDGothicNeoSB00", Font.PLAIN, 14));
 		lblNewReleaseAlbumName2.setBounds(557, 237, 169, 27);
 		panel3.add(lblNewReleaseAlbumName2);
 
-		lblNewReleaseArtistName2 = new JLabel("Artist name");
+		lblNewReleaseArtistName2 = new JLabel("NCT DREAM");
 		lblNewReleaseArtistName2.setForeground(Color.GRAY);
 		lblNewReleaseArtistName2.setFont(new Font("AppleSDGothicNeoSB00", Font.PLAIN, 14));
 		lblNewReleaseArtistName2.setBounds(557, 257, 169, 27);
 		panel3.add(lblNewReleaseArtistName2);
 
-		lblNewReleaseAlbumName3 = new JLabel("Album name");
+		lblNewReleaseAlbumName3 = new JLabel("FRI(END)S - Single");
 		lblNewReleaseAlbumName3.setFont(new Font("AppleSDGothicNeoSB00", Font.PLAIN, 14));
 		lblNewReleaseAlbumName3.setBounds(776, 237, 169, 27);
 		panel3.add(lblNewReleaseAlbumName3);
 
-		lblNewReleaseArtistName3 = new JLabel("Artist name");
+		lblNewReleaseArtistName3 = new JLabel("뷔");
 		lblNewReleaseArtistName3.setForeground(Color.GRAY);
 		lblNewReleaseArtistName3.setFont(new Font("AppleSDGothicNeoSB00", Font.PLAIN, 14));
 		lblNewReleaseArtistName3.setBounds(776, 257, 169, 27);
 		panel3.add(lblNewReleaseArtistName3);
 
 		lblEssentialAlbum2 = new JLabel("");
+		lblEssentialAlbum2.setIcon(new ImageIcon(Kpop1.class.getResource("/Images/browse/kpopEssential1.gif")));
 		lblEssentialAlbum2.setBorder(new LineBorder(new Color(0, 0, 0)));
 		lblEssentialAlbum2.setBounds(558, 346, 170, 152);
 		panel3.add(lblEssentialAlbum2);
 
-		lblEssentialAlbumName2 = new JLabel("Album name");
+		lblEssentialAlbumName2 = new JLabel("THE ALBUM");
 		lblEssentialAlbumName2.setFont(new Font("AppleSDGothicNeoSB00", Font.PLAIN, 14));
 		lblEssentialAlbumName2.setBounds(557, 508, 169, 27);
 		panel3.add(lblEssentialAlbumName2);
 
-		lblEssentialAlbumArtistName2 = new JLabel("Artist name");
+		lblEssentialAlbumArtistName2 = new JLabel("BLACKPINK");
 		lblEssentialAlbumArtistName2.setForeground(Color.GRAY);
 		lblEssentialAlbumArtistName2.setFont(new Font("AppleSDGothicNeoSB00", Font.PLAIN, 14));
 		lblEssentialAlbumArtistName2.setBounds(557, 528, 169, 27);
 		panel3.add(lblEssentialAlbumArtistName2);
 
 		lblEssentialAlbum3 = new JLabel("");
+		lblEssentialAlbum3.setIcon(new ImageIcon(Kpop1.class.getResource("/Images/browse/kpopEssential2.gif")));
 		lblEssentialAlbum3.setBorder(new LineBorder(new Color(0, 0, 0)));
 		lblEssentialAlbum3.setBounds(777, 346, 170, 152);
 		panel3.add(lblEssentialAlbum3);
 
-		lblEssentialAlbumName3 = new JLabel("Album name");
+		lblEssentialAlbumName3 = new JLabel("NO.1 - The 2nd Album");
 		lblEssentialAlbumName3.setFont(new Font("AppleSDGothicNeoSB00", Font.PLAIN, 14));
 		lblEssentialAlbumName3.setBounds(776, 508, 169, 27);
 		panel3.add(lblEssentialAlbumName3);
 
-		lblEssentialAlbumArtistName3 = new JLabel("Artist name");
+		lblEssentialAlbumArtistName3 = new JLabel("보아");
 		lblEssentialAlbumArtistName3.setForeground(Color.GRAY);
 		lblEssentialAlbumArtistName3.setFont(new Font("AppleSDGothicNeoSB00", Font.PLAIN, 14));
 		lblEssentialAlbumArtistName3.setBounds(776, 528, 169, 27);

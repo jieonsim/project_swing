@@ -34,9 +34,9 @@ import util.SessionManager;
 public class RnbSoul2 extends JFrame {
 	private JButton btnHome, btnLogout, btnArtists, btnAlbums, btnSongs, btnMyPlaylists, btnFavoriteSongs,
 			btnNewPlaylist, btnExit, btnBrowse, btnSearch, btnAddToMyPlaylist, btnAddToFavoriteSongs;
-	private JLabel lblPlaylists, lblAllTracks, lblEssentialAlbums, lblNewReleaseArtistName2, lblNewReleaseAlbumName3,
-			lblNewReleaseArtistName3, lblEssentialAlbum2, lblEssentialAlbumName2, lblEssentialAlbumArtistName2,
-			lblEssentialAlbum3, lblEssentialAlbumName3, lblEssentialAlbumArtistName3;
+	private JLabel lblPlaylists, lblAllTracks, lblEssentialAlbums, lblNewReleaseArtistName1, lblNewReleaseArtistName2,
+	lblNewReleaseAlbumName2, lblEssentialAlbum1, lblEssentialAlbumName1, lblEssentialAlbumArtistName1,
+			lblEssentialAlbum2, lblEssentialAlbumName2, lblEssentialAlbumArtistName2;
 	private JTable table;
 	private DefaultTableCellRenderer dtcr;
 	private TableColumnModel tcm;
@@ -71,12 +71,12 @@ public class RnbSoul2 extends JFrame {
 		btnHome.setBorderPainted(false);
 		btnHome.setHorizontalAlignment(SwingConstants.LEFT);
 		btnHome.setFont(new Font("AppleSDGothicNeoM00", Font.PLAIN, 20));
-		btnHome.setIcon(new ImageIcon(Home2.class.getResource("/Images/homelogo.png")));
+		btnHome.setIcon(new ImageIcon(Pop2.class.getResource("/Images/homelogo.png")));
 		btnHome.setBounds(22, 84, 223, 34);
 		panel1.add(btnHome);
 
 		btnBrowse = new JButton("  Browse");
-		btnBrowse.setIcon(new ImageIcon(HipHop2.class.getResource("/Images/browse.png")));
+		btnBrowse.setIcon(new ImageIcon(Pop2.class.getResource("/Images/browse.png")));
 		btnBrowse.setHorizontalAlignment(SwingConstants.LEFT);
 		btnBrowse.setFont(new Font("AppleSDGothicNeoM00", Font.PLAIN, 20));
 		btnBrowse.setContentAreaFilled(false);
@@ -86,73 +86,73 @@ public class RnbSoul2 extends JFrame {
 
 		JLabel lblLibrary = new JLabel("Library");
 		lblLibrary.setFont(new Font("AppleSDGothicNeoL00", Font.PLAIN, 15));
-		lblLibrary.setBounds(22, 224, 93, 26);
+		lblLibrary.setBounds(22, 409, 93, 26);
 		panel1.add(lblLibrary);
 
 		btnArtists = new JButton("  Artists");
-		btnArtists.setIcon(new ImageIcon(Home2.class.getResource("/Images/artists.png")));
+		btnArtists.setIcon(new ImageIcon(Pop2.class.getResource("/Images/artists.png")));
 		btnArtists.setHorizontalAlignment(SwingConstants.LEFT);
 		btnArtists.setFont(new Font("AppleSDGothicNeoM00", Font.PLAIN, 20));
 		btnArtists.setContentAreaFilled(false);
 		btnArtists.setBorderPainted(false);
-		btnArtists.setBounds(22, 260, 223, 34);
+		btnArtists.setBounds(22, 445, 223, 34);
 		panel1.add(btnArtists);
 
 		btnAlbums = new JButton("  Alubms");
-		btnAlbums.setIcon(new ImageIcon(Home2.class.getResource("/Images/albums.png")));
+		btnAlbums.setIcon(new ImageIcon(Pop2.class.getResource("/Images/albums.png")));
 		btnAlbums.setHorizontalAlignment(SwingConstants.LEFT);
 		btnAlbums.setFont(new Font("AppleSDGothicNeoM00", Font.PLAIN, 20));
 		btnAlbums.setContentAreaFilled(false);
 		btnAlbums.setBorderPainted(false);
-		btnAlbums.setBounds(22, 304, 223, 34);
+		btnAlbums.setBounds(22, 489, 223, 34);
 		panel1.add(btnAlbums);
 
 		btnSongs = new JButton("  Songs");
-		btnSongs.setIcon(new ImageIcon(Home2.class.getResource("/Images/songs.png")));
+		btnSongs.setIcon(new ImageIcon(Pop2.class.getResource("/Images/songs.png")));
 		btnSongs.setHorizontalAlignment(SwingConstants.LEFT);
 		btnSongs.setFont(new Font("AppleSDGothicNeoM00", Font.PLAIN, 20));
 		btnSongs.setContentAreaFilled(false);
 		btnSongs.setBorderPainted(false);
-		btnSongs.setBounds(22, 348, 223, 34);
+		btnSongs.setBounds(22, 533, 223, 34);
 		panel1.add(btnSongs);
 
 		lblPlaylists = new JLabel("Playlists");
 		lblPlaylists.setFont(new Font("AppleSDGothicNeoL00", Font.PLAIN, 15));
-		lblPlaylists.setBounds(22, 409, 93, 26);
+		lblPlaylists.setBounds(22, 224, 93, 26);
 		panel1.add(lblPlaylists);
 
 		btnMyPlaylists = new JButton("  My Playlits");
-		btnMyPlaylists.setIcon(new ImageIcon(Home2.class.getResource("/Images/allPlaylists.png")));
+		btnMyPlaylists.setIcon(new ImageIcon(Pop2.class.getResource("/Images/allPlaylists.png")));
 		btnMyPlaylists.setHorizontalAlignment(SwingConstants.LEFT);
 		btnMyPlaylists.setFont(new Font("AppleSDGothicNeoM00", Font.PLAIN, 20));
 		btnMyPlaylists.setContentAreaFilled(false);
 		btnMyPlaylists.setBorderPainted(false);
-		btnMyPlaylists.setBounds(22, 445, 223, 34);
+		btnMyPlaylists.setBounds(22, 260, 223, 34);
 		panel1.add(btnMyPlaylists);
 
 		btnFavoriteSongs = new JButton("  Favorite Songs");
-		btnFavoriteSongs.setIcon(new ImageIcon(Home2.class.getResource("/Images/favoriteSongsHeartVer.png")));
+		btnFavoriteSongs.setIcon(new ImageIcon(Pop2.class.getResource("/Images/favoriteSongsHeartVer.png")));
 		btnFavoriteSongs.setHorizontalAlignment(SwingConstants.LEFT);
 		btnFavoriteSongs.setFont(new Font("AppleSDGothicNeoM00", Font.PLAIN, 20));
 		btnFavoriteSongs.setContentAreaFilled(false);
 		btnFavoriteSongs.setBorderPainted(false);
-		btnFavoriteSongs.setBounds(22, 489, 223, 34);
+		btnFavoriteSongs.setBounds(22, 304, 223, 34);
 		panel1.add(btnFavoriteSongs);
 
 		btnNewPlaylist = new JButton("  New playlist");
 		btnNewPlaylist.setBorderPainted(false);
-		btnNewPlaylist.setIcon(new ImageIcon(Home2.class.getResource("/Images/newPlaylist.png")));
+		btnNewPlaylist.setIcon(new ImageIcon(Pop2.class.getResource("/Images/newPlaylist.png")));
 		btnNewPlaylist.setOpaque(false);
 		btnNewPlaylist.setForeground(Color.BLACK);
 		btnNewPlaylist.setFont(new Font("AppleSDGothicNeoM00", Font.PLAIN, 20));
 		btnNewPlaylist.setContentAreaFilled(false);
 		btnNewPlaylist.setBorder(new EmptyBorder(0, 0, 0, 0));
 		btnNewPlaylist.setBackground(Color.WHITE);
-		btnNewPlaylist.setBounds(30, 534, 158, 34);
+		btnNewPlaylist.setBounds(30, 348, 158, 34);
 		panel1.add(btnNewPlaylist);
 
 		btnExit = new JButton("  Exit");
-		btnExit.setIcon(new ImageIcon(Home2.class.getResource("/Images/exit.png")));
+		btnExit.setIcon(new ImageIcon(Pop2.class.getResource("/Images/exit.png")));
 		btnExit.setHorizontalAlignment(SwingConstants.LEFT);
 		btnExit.setFont(new Font("AppleSDGothicNeoM00", Font.PLAIN, 20));
 		btnExit.setContentAreaFilled(false);
@@ -161,7 +161,7 @@ public class RnbSoul2 extends JFrame {
 		panel1.add(btnExit);
 
 		btnSearch = new JButton("  Search");
-		btnSearch.setIcon(new ImageIcon(HipHop2.class.getResource("/Images/search.png")));
+		btnSearch.setIcon(new ImageIcon(Pop2.class.getResource("/Images/search.png")));
 		btnSearch.setHorizontalAlignment(SwingConstants.LEFT);
 		btnSearch.setFont(new Font("AppleSDGothicNeoM00", Font.PLAIN, 20));
 		btnSearch.setContentAreaFilled(false);
@@ -183,7 +183,7 @@ public class RnbSoul2 extends JFrame {
 		btnLogout.setContentAreaFilled(true);
 		btnLogout.setBackground(new Color(255, 255, 255));
 		btnLogout.setFont(new Font("AppleSDGothicNeoB00", Font.PLAIN, 20));
-		btnLogout.setIcon(new ImageIcon(Home2.class.getResource("/Images/user2.png")));
+		btnLogout.setIcon(new ImageIcon(Pop2.class.getResource("/Images/user2.png")));
 		btnLogout.setForeground(new Color(0, 0, 0));
 		btnLogout.setBounds(836, 21, 141, 34);
 		panel2.add(btnLogout);
@@ -194,32 +194,34 @@ public class RnbSoul2 extends JFrame {
 		getContentPane().add(panel3);
 		panel3.setLayout(null);
 
-		lblAllTracks = new JLabel("Pop All Tracks > ");
+		lblAllTracks = new JLabel("R&B / Soul All Tracks > ");
 		lblAllTracks.setFont(new Font("AppleSDGothicNeoM00", Font.PLAIN, 15));
-		lblAllTracks.setBounds(44, 51, 131, 27);
+		lblAllTracks.setBounds(44, 38, 192, 27);
 		panel3.add(lblAllTracks);
 
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(43, 88, 480, 473);
+		scrollPane.setBounds(43, 75, 480, 473);
 		panel3.add(scrollPane);
 
 		JLabel lblNewReleases = new JLabel("New Releases > ");
 		lblNewReleases.setFont(new Font("AppleSDGothicNeoM00", Font.PLAIN, 15));
-		lblNewReleases.setBounds(557, 55, 156, 27);
+		lblNewReleases.setBounds(557, 42, 156, 27);
 		panel3.add(lblNewReleases);
 
-		JLabel lblNewReleases2 = new JLabel("");
-		lblNewReleases2.setBorder(new LineBorder(new Color(0, 0, 0)));
-		lblNewReleases2.setBounds(558, 88, 170, 152);
-		panel3.add(lblNewReleases2);
+		JLabel lblNewReleases1 = new JLabel("");
+		lblNewReleases1.setIcon(new ImageIcon(RnbSoul2.class.getResource("/Images/browse/rnbSoulNew1.gif")));
+		lblNewReleases1.setBorder(new LineBorder(new Color(0, 0, 0)));
+		lblNewReleases1.setBounds(558, 75, 170, 152);
+		panel3.add(lblNewReleases1);
 
-		JLabel lblNewReleases3 = new JLabel("");
-		lblNewReleases3.setBorder(new LineBorder(new Color(0, 0, 0)));
-		lblNewReleases3.setBounds(777, 88, 170, 152);
-		panel3.add(lblNewReleases3);
+		JLabel lblNewReleases2 = new JLabel("");
+		lblNewReleases2.setIcon(new ImageIcon(RnbSoul2.class.getResource("/Images/browse/rnbSoulNew2.gif")));
+		lblNewReleases2.setBorder(new LineBorder(new Color(0, 0, 0)));
+		lblNewReleases2.setBounds(777, 75, 170, 152);
+		panel3.add(lblNewReleases2);
 		
 		btnAddToMyPlaylist = new JButton("");
-		btnAddToMyPlaylist.setIcon(new ImageIcon(Pop1.class.getResource("/Images/addToPlaylist.png")));
+		btnAddToMyPlaylist.setIcon(new ImageIcon(Pop2.class.getResource("/Images/addToPlaylist.png")));
 		btnAddToMyPlaylist.setOpaque(false);
 		btnAddToMyPlaylist.setForeground(Color.BLACK);
 		btnAddToMyPlaylist.setFont(new Font("AppleSDGothicNeoM00", Font.PLAIN, 20));
@@ -227,11 +229,11 @@ public class RnbSoul2 extends JFrame {
 		btnAddToMyPlaylist.setBorderPainted(false);
 		btnAddToMyPlaylist.setBorder(new EmptyBorder(0, 0, 0, 0));
 		btnAddToMyPlaylist.setBackground(Color.WHITE);
-		btnAddToMyPlaylist.setBounds(475, 44, 48, 34);
+		btnAddToMyPlaylist.setBounds(475, 31, 48, 34);
 		panel3.add(btnAddToMyPlaylist);
 
 		btnAddToFavoriteSongs = new JButton("");
-		btnAddToFavoriteSongs.setIcon(new ImageIcon(Pop1.class.getResource("/Images/favoriteSongsHeartVer.png")));
+		btnAddToFavoriteSongs.setIcon(new ImageIcon(Pop2.class.getResource("/Images/favoriteSongsHeartVer.png")));
 		btnAddToFavoriteSongs.setOpaque(false);
 		btnAddToFavoriteSongs.setForeground(Color.BLACK);
 		btnAddToFavoriteSongs.setFont(new Font("AppleSDGothicNeoM00", Font.PLAIN, 20));
@@ -239,67 +241,69 @@ public class RnbSoul2 extends JFrame {
 		btnAddToFavoriteSongs.setBorderPainted(false);
 		btnAddToFavoriteSongs.setBorder(new EmptyBorder(0, 0, 0, 0));
 		btnAddToFavoriteSongs.setBackground(Color.WHITE);
-		btnAddToFavoriteSongs.setBounds(435, 40, 48, 34);
+		btnAddToFavoriteSongs.setBounds(435, 27, 48, 34);
 		panel3.add(btnAddToFavoriteSongs);
 
 		lblEssentialAlbums = new JLabel("Essential Albums  >");
 		lblEssentialAlbums.setFont(new Font("AppleSDGothicNeoM00", Font.PLAIN, 15));
-		lblEssentialAlbums.setBounds(557, 326, 169, 27);
+		lblEssentialAlbums.setBounds(557, 313, 169, 27);
 		panel3.add(lblEssentialAlbums);
 
-		JLabel lblNewReleaseAlbumName2 = new JLabel("Album name");
+		JLabel lblNewReleaseAlbumName1 = new JLabel("Cinema Pt. 2 - EP");
+		lblNewReleaseAlbumName1.setFont(new Font("AppleSDGothicNeoSB00", Font.PLAIN, 14));
+		lblNewReleaseAlbumName1.setBounds(557, 237, 169, 27);
+		panel3.add(lblNewReleaseAlbumName1);
+
+		lblNewReleaseArtistName1 = new JLabel("Dori");
+		lblNewReleaseArtistName1.setForeground(Color.GRAY);
+		lblNewReleaseArtistName1.setFont(new Font("AppleSDGothicNeoSB00", Font.PLAIN, 14));
+		lblNewReleaseArtistName1.setBounds(557, 257, 169, 27);
+		panel3.add(lblNewReleaseArtistName1);
+
+		lblNewReleaseAlbumName2 = new JLabel("HEAVY");
 		lblNewReleaseAlbumName2.setFont(new Font("AppleSDGothicNeoSB00", Font.PLAIN, 14));
-		lblNewReleaseAlbumName2.setBounds(559, 250, 169, 27);
+		lblNewReleaseAlbumName2.setBounds(776, 237, 169, 27);
 		panel3.add(lblNewReleaseAlbumName2);
 
-		lblNewReleaseArtistName2 = new JLabel("Artist name");
+		lblNewReleaseArtistName2 = new JLabel("SiR");
 		lblNewReleaseArtistName2.setForeground(Color.GRAY);
 		lblNewReleaseArtistName2.setFont(new Font("AppleSDGothicNeoSB00", Font.PLAIN, 14));
-		lblNewReleaseArtistName2.setBounds(559, 270, 169, 27);
+		lblNewReleaseArtistName2.setBounds(776, 257, 169, 27);
 		panel3.add(lblNewReleaseArtistName2);
 
-		lblNewReleaseAlbumName3 = new JLabel("Album name");
-		lblNewReleaseAlbumName3.setFont(new Font("AppleSDGothicNeoSB00", Font.PLAIN, 14));
-		lblNewReleaseAlbumName3.setBounds(778, 250, 169, 27);
-		panel3.add(lblNewReleaseAlbumName3);
+		lblEssentialAlbum1 = new JLabel("");
+		lblEssentialAlbum1.setIcon(new ImageIcon(RnbSoul2.class.getResource("/Images/browse/rnbSoulEssential1.gif")));
+		lblEssentialAlbum1.setBorder(new LineBorder(new Color(0, 0, 0)));
+		lblEssentialAlbum1.setBounds(558, 346, 170, 152);
+		panel3.add(lblEssentialAlbum1);
 
-		lblNewReleaseArtistName3 = new JLabel("Artist name");
-		lblNewReleaseArtistName3.setForeground(Color.GRAY);
-		lblNewReleaseArtistName3.setFont(new Font("AppleSDGothicNeoSB00", Font.PLAIN, 14));
-		lblNewReleaseArtistName3.setBounds(778, 270, 169, 27);
-		panel3.add(lblNewReleaseArtistName3);
+		lblEssentialAlbumName1 = new JLabel("Ctrl");
+		lblEssentialAlbumName1.setFont(new Font("AppleSDGothicNeoSB00", Font.PLAIN, 14));
+		lblEssentialAlbumName1.setBounds(557, 508, 169, 27);
+		panel3.add(lblEssentialAlbumName1);
+
+		lblEssentialAlbumArtistName1 = new JLabel("SZA");
+		lblEssentialAlbumArtistName1.setForeground(Color.GRAY);
+		lblEssentialAlbumArtistName1.setFont(new Font("AppleSDGothicNeoSB00", Font.PLAIN, 14));
+		lblEssentialAlbumArtistName1.setBounds(557, 528, 169, 27);
+		panel3.add(lblEssentialAlbumArtistName1);
 
 		lblEssentialAlbum2 = new JLabel("");
+		lblEssentialAlbum2.setIcon(new ImageIcon(RnbSoul2.class.getResource("/Images/browse/rnbSoulEssential2.gif")));
 		lblEssentialAlbum2.setBorder(new LineBorder(new Color(0, 0, 0)));
-		lblEssentialAlbum2.setBounds(558, 359, 170, 152);
+		lblEssentialAlbum2.setBounds(777, 346, 170, 152);
 		panel3.add(lblEssentialAlbum2);
 
-		lblEssentialAlbumName2 = new JLabel("Album name");
+		lblEssentialAlbumName2 = new JLabel("From Midnight To Sunrise");
 		lblEssentialAlbumName2.setFont(new Font("AppleSDGothicNeoSB00", Font.PLAIN, 14));
-		lblEssentialAlbumName2.setBounds(559, 521, 169, 27);
+		lblEssentialAlbumName2.setBounds(776, 508, 169, 27);
 		panel3.add(lblEssentialAlbumName2);
 
-		lblEssentialAlbumArtistName2 = new JLabel("Artist name");
+		lblEssentialAlbumArtistName2 = new JLabel("크러쉬");
 		lblEssentialAlbumArtistName2.setForeground(Color.GRAY);
 		lblEssentialAlbumArtistName2.setFont(new Font("AppleSDGothicNeoSB00", Font.PLAIN, 14));
-		lblEssentialAlbumArtistName2.setBounds(559, 541, 169, 27);
+		lblEssentialAlbumArtistName2.setBounds(776, 528, 169, 27);
 		panel3.add(lblEssentialAlbumArtistName2);
-
-		lblEssentialAlbum3 = new JLabel("");
-		lblEssentialAlbum3.setBorder(new LineBorder(new Color(0, 0, 0)));
-		lblEssentialAlbum3.setBounds(777, 359, 170, 152);
-		panel3.add(lblEssentialAlbum3);
-
-		lblEssentialAlbumName3 = new JLabel("Album name");
-		lblEssentialAlbumName3.setFont(new Font("AppleSDGothicNeoSB00", Font.PLAIN, 14));
-		lblEssentialAlbumName3.setBounds(778, 521, 169, 27);
-		panel3.add(lblEssentialAlbumName3);
-
-		lblEssentialAlbumArtistName3 = new JLabel("Artist name");
-		lblEssentialAlbumArtistName3.setForeground(Color.GRAY);
-		lblEssentialAlbumArtistName3.setFont(new Font("AppleSDGothicNeoSB00", Font.PLAIN, 14));
-		lblEssentialAlbumArtistName3.setBounds(778, 541, 169, 27);
-		panel3.add(lblEssentialAlbumArtistName3);
 		
 		// ------------ 테이블 설계 ---------------
 
@@ -309,9 +313,10 @@ public class RnbSoul2 extends JFrame {
 		columnNames.add("artist");
 		columnNames.add("album");
 
-		Vector<Vector<Object>> data = musicService.getTracksByGenres("rnbsoul");
+		Vector<Vector<Object>> data = musicService.getTracksByGenres("rnbSoul");
 
 		table = new JTable(data, columnNames);
+		table.setFont(new Font("AppleSDGothicNeoR00", Font.PLAIN, 12));
 		scrollPane.setViewportView(table);
 
 		// 0번째 열(songIDX) 크기 줄이기

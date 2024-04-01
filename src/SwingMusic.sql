@@ -1,14 +1,27 @@
 show tables;
 
-DESC albums;
+DESC genres;
 --DROP TABLE users;
 --DELETE FROM users;
-SELECT * FROM songs;
-SELECT * FROM albums;
+SELECT * FROM genres;
+SELECT * FROM users;
 
+-- 막 회원가입한 유저 삭제가 불가하여 아래와 같이 처리
+/*
+ * playlists 테이블에 이 사용자와 관련된 외래 키 제약 조건이 존재하기 때문에 삭제 작업을 완료할 수 없다는 것을 의미
+ * . 즉, userIDX가 12인 사용자가 playlists 테이블에 하나 이상의 플레이리스트를 가지고 있기 때문에, 
+ * 사용자 레코드를 삭제하려면 먼저 해당 사용자와 연관된 모든 플레이리스트를 playlists 테이블에서 삭제해야 합니다.
+ */
+
+DELETE FROM playlists WHERE userIDX = 12;
+DELETE FROM users WHERE userIDX = 12;
+
+--------------------------------------------------------
 SELECT * FROM songs WHERE aritstIDX = 2;
-SELECT * FROM playlists WHERE userIDX = 11;
+SELECT * FROM playlists WHERE userIDX = 12;
 SELECT * FROM playlists WHERE userIDX = 10 AND isFavorite = TRUE;
+
+DELETE FROM users WHERE userIDX = 12;
 
 
 -- Users (사용자)
@@ -18,8 +31,10 @@ CREATE TABLE users (
 	password VARCHAR(255) NOT NULL,
 	UserName VARCHAR(50) NOT NULL,
 	phoneNumber VARCHAR(20) NOT NULL,
-	joinDate DATETIME DEFAULT NOW() -- DEFAULT 키워드로 기본값 설정
 );
+
+ALTER TABLE users DROP COLUMN joinDate; -- joindate삭제
+
 
 -- Artists (아티스트)
 CREATE TABLE artists (
@@ -27,6 +42,14 @@ CREATE TABLE artists (
 	artistName VARCHAR(100) NOT NULL,
 	imagePath VARCHAR(255)
 );
+
+INSERT INTO artists (artistName, imagePath) VALUES 
+('Emotional Oranges','emotinal.jpg'),
+('21 Savage','21savage.jpg'),
+('Oasis','oasis.jpg'),
+('Amaro Freitas','amaro.jpg'),
+('아일릿','illit.jpg');
+
 
 UPDATE artists SET imagePath = 'ariana.jpg' WHERE artistIDX = 1;
 UPDATE artists SET imagePath = 'sza.jpg' WHERE artistIDX = 2;
@@ -47,6 +70,16 @@ CREATE TABLE albums (
 	FOREIGN KEY (artistIDX) REFERENCES artists (artistIDX),
 	FOREIGN KEY (genreIDX) REFERENCES genres (genreIDX)
 );
+
+INSERT INTO albums (artistIDX, genreIDX, albumName, releaseDate, coverPath) VALUES
+(20, 2, 'The Juice, Vol.I', '2019-05-10', 'juice1.jpg'),
+(20, 2, 'The Juice, Vol.II', '2019-11-08', 'juice2.jpg'),
+(21, 3, 'american dream', '2024-01-11', 'american.jpg'),
+(22, 4, '(What''s the Story) Morning Glory?', '1995-10-02', 'morning.jpg'),
+(23, 5, 'Y''Y', '2024-03-01', 'yy.jpg'),
+(24, 6, 'SUPER REAL ME - EP', '2024-03-25', 'super.jpg');
+
+
 
 
 UPDATE albums SET coverPath = 'sos.jpg' WHERE albumIDX = 7;
@@ -84,14 +117,11 @@ CREATE TABLE songs (
 ALTER TABLE songs DROP COLUMN duration; -- 노래길이 삭제
 
 INSERT INTO songs (albumIDX, artistIDX, songName) VALUES
-(17, 7, 'Don''t know Why'),
-(17, 7, 'Seven Years'),
-(17, 7, 'Cold Cold Heart'),
-(17, 7, 'Feelin'' the Same Way'),
-(17, 7, 'Come Away with Me'),
-(17, 7, 'Shoot the Moon'),
-(17, 7, 'Turn Me On'),
-(17, 7, 'Lonestar');
+(31, 24, 'My World'),
+(31, 24, 'Magnetic'),
+(31, 24, 'Midnight Fiction'),
+(31, 24, 'Lucky Girl Syndrome');
+
 
 
 INSERT INTO songs (albumIDX, artistIDX, songName) VALUES (7, 2, 'I Hate U');
@@ -105,12 +135,16 @@ CREATE TABLE genres (
 	imagePath VARCHAR(255)
 );
 
+
 INSERT INTO genres (genreName, imagePath) VALUES ('pop', null); --1
 INSERT INTO genres (genreName, imagePath) VALUES ('rnbSoul', null); --2
 INSERT INTO genres (genreName, imagePath) VALUES ('hiphop', null); --3
 INSERT INTO genres (genreName, imagePath) VALUES ('rock', null); --4
 INSERT INTO genres (genreName, imagePath) VALUES ('jazz', null); --5
 INSERT INTO genres (genreName, imagePath) VALUES ('kpop', null); --6
+
+ALTER TABLE genres DROP COLUMN imagePath;
+
 
 
 -- Playlists (플레이리스트)
@@ -128,6 +162,9 @@ CREATE TABLE playlists (
  */
 ALTER TABLE playlists
 ADD COLUMN playlistCoverImagePath VARCHAR(255);
+desc playlists;
+
+select * from playlists where userIDX = 13;
 
 
 -- PlaylistSongs (플레이리스트 노래)

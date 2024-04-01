@@ -46,7 +46,7 @@ public class Artists extends JFrame {
 
 	MusicService musicService = new MusicService();
 	MusicDAO musicDAO = new MusicDAO();
-	
+
 	public Artists() {
 		super("Swing Music");
 		getContentPane().setBackground(new Color(255, 255, 255));
@@ -209,7 +209,7 @@ public class Artists extends JFrame {
 
 		// ---------------테이블 설계----------------------------------
 		Vector<String> columnNames = new Vector<>();
-		columnNames.add("Artist No");
+		columnNames.add("No");
 		columnNames.add("Image");
 		columnNames.add("Artist Name");
 
@@ -219,11 +219,11 @@ public class Artists extends JFrame {
 		// 현재 로그인한 사용자 IDX를 SessionManager에서 가져오기
 		Integer currentUserIDX = SessionManager.getCurrentUserIDX();
 		if (currentUserIDX != null) {
-		    // musicDAO를 통해 현재 사용자의 아티스트 정보를 가져오기
-		    List<ArtistVO> artists = musicDAO.getUserArtists(currentUserIDX);
-		    
-		    for (ArtistVO artist : artists) {
-		        Vector<Object> row = new Vector<>();
+			// musicDAO를 통해 현재 사용자의 아티스트 정보를 가져오기
+			List<ArtistVO> artists = musicDAO.getUserArtists(currentUserIDX);
+
+			for (ArtistVO artist : artists) {
+				Vector<Object> row = new Vector<>();
 				row.add(artist.getArtistIDX());
 				ImageIcon icon = null;
 				String imagePath = artist.getImagePath();
@@ -237,31 +237,32 @@ public class Artists extends JFrame {
 				row.add(icon); // Icon 객체를 데이터 벡터에 추가
 				row.add(artist.getArtistName());
 				data.add(row);
-		    }
-		    
-		    dtm = new DefaultTableModel(data, columnNames) {
-		        @Override
-		        public Class<?> getColumnClass(int column) {
-		            return column == 1 ? ImageIcon.class : Object.class; // 두번째 컬럼에는 이미지 아이콘 표시
-		        }
-		    };
-		    
-		    table = new JTable(dtm);
-		    
-		    // 이미지를 포함하는 컬럼을 제외하고 나머지 컬럼 중앙 정렬
-		    dtcr = new DefaultTableCellRenderer();
-		    dtcr.setHorizontalAlignment(SwingConstants.CENTER);
-		    table.getColumnModel().getColumn(0).setCellRenderer(dtcr);
-		    table.getColumnModel().getColumn(2).setCellRenderer(dtcr);
-		    
-		    // 이미지 컬럼 높이 조정
-		    table.setRowHeight(100);
-		    
-		    scrollPane.setViewportView(table);
+			}
+
+			dtm = new DefaultTableModel(data, columnNames) {
+				@Override
+				public Class<?> getColumnClass(int column) {
+					return column == 1 ? ImageIcon.class : Object.class; // 두번째 컬럼에는 이미지 아이콘 표시
+				}
+			};
+
+			table = new JTable(dtm);
+
+			// 0번째 열(albumIDX) 크기 줄이기
+			table.getColumnModel().getColumn(0).setMaxWidth(30);
+			// 이미지를 포함하는 컬럼을 제외하고 나머지 컬럼 중앙 정렬
+			dtcr = new DefaultTableCellRenderer();
+			dtcr.setHorizontalAlignment(SwingConstants.CENTER);
+			table.getColumnModel().getColumn(0).setCellRenderer(dtcr);
+			table.getColumnModel().getColumn(2).setCellRenderer(dtcr);
+			// 이미지 컬럼 높이 조정
+			table.setRowHeight(100);
+
+			scrollPane.setViewportView(table);
 		} else {
-		    JOptionPane.showMessageDialog(null, "로그인 상태를 확인해주세요.");
+			JOptionPane.showMessageDialog(null, "로그인 상태를 확인해주세요.");
 		}
-		
+
 		// -----------------------------------------------------------------
 		setVisible(true);
 		// -----------------------------------------------------------------
@@ -281,7 +282,7 @@ public class Artists extends JFrame {
 				new Artists();
 			}
 		});
-		
+
 		// myplaylist
 		btnMyplaylists.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -296,7 +297,7 @@ public class Artists extends JFrame {
 				System.exit(0);
 			}
 		});
-		
+
 		// browse 버튼 클릭
 		btnBrowse.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -304,7 +305,7 @@ public class Artists extends JFrame {
 				new Browse2();
 			}
 		});
-		
+
 		// search
 		btnSearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -312,7 +313,7 @@ public class Artists extends JFrame {
 				new Search2();
 			}
 		});
-		
+
 		// favorite
 		btnFavoriteSongs.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -320,7 +321,7 @@ public class Artists extends JFrame {
 				new FavoriteSongs();
 			}
 		});
-		
+
 		// logout
 		btnLogout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -328,14 +329,14 @@ public class Artists extends JFrame {
 				new Home1();
 			}
 		});
-		
+
 		// new playlist
 		btnNewPlaylist.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				createNewPlaylist();
 			}
 		});
-		
+
 		// albums
 		btnAlbums.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -343,7 +344,7 @@ public class Artists extends JFrame {
 				new Albums();
 			}
 		});
-		
+
 		// songs
 		btnSongs.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -356,7 +357,7 @@ public class Artists extends JFrame {
 
 		setVisible(true);
 	}
-	
+
 	// 새로운 플레이리스트 만들기
 	protected void createNewPlaylist() {
 		// 사용자 입력을 통해 플레이리스트 이름을 받아옴

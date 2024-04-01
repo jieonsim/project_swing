@@ -68,28 +68,28 @@ public class Login extends JFrame {
 		btnLogin.setBorder(new LineBorder(new Color(192, 192, 192), 2));
 		btnLogin.setFont(new Font("AppleSDGothicNeoM00", Font.PLAIN, 17));
 		btnLogin.setBackground(new Color(232, 232, 232));
-		btnLogin.setBounds(398, 442, 211, 51);
+		btnLogin.setBounds(389, 442, 211, 51);
 		panel2.add(btnLogin);
 
 		btnFindToID = new JButton("아이디 찾기");
 		btnFindToID.setFont(new Font("AppleSDGothicNeoM00", Font.PLAIN, 12));
 		btnFindToID.setContentAreaFilled(false);
 		btnFindToID.setBorderPainted(false);
-		btnFindToID.setBounds(360, 362, 98, 23);
+		btnFindToID.setBounds(351, 362, 98, 23);
 		panel2.add(btnFindToID);
 
 		btnFindToPassword = new JButton("비밀번호 찾기");
 		btnFindToPassword.setFont(new Font("AppleSDGothicNeoM00", Font.PLAIN, 12));
 		btnFindToPassword.setContentAreaFilled(false);
 		btnFindToPassword.setBorderPainted(false);
-		btnFindToPassword.setBounds(547, 362, 104, 23);
+		btnFindToPassword.setBounds(538, 362, 104, 23);
 		panel2.add(btnFindToPassword);
 
 		btnSignUp = new JButton("회원가입");
 		btnSignUp.setFont(new Font("AppleSDGothicNeoM00", Font.PLAIN, 12));
 		btnSignUp.setContentAreaFilled(false);
 		btnSignUp.setBorderPainted(false);
-		btnSignUp.setBounds(459, 362, 88, 23);
+		btnSignUp.setBounds(450, 362, 88, 23);
 		panel2.add(btnSignUp);
 
 		passwordField = new JPasswordField();
@@ -113,11 +113,11 @@ public class Login extends JFrame {
 		panel2.add(lblID);
 
 		lblSplit1 = new JLabel("|");
-		lblSplit1.setBounds(452, 367, 17, 15);
+		lblSplit1.setBounds(443, 367, 17, 15);
 		panel2.add(lblSplit1);
 
 		lblSplit2 = new JLabel("|");
-		lblSplit2.setBounds(547, 367, 17, 15);
+		lblSplit2.setBounds(538, 367, 17, 15);
 		panel2.add(lblSplit2);
 
 		setVisible(true);
