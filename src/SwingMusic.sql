@@ -1,6 +1,6 @@
 show tables;
 
-DESC genres;
+DESC artists;
 --DROP TABLE users;
 --DELETE FROM users;
 SELECT * FROM genres;

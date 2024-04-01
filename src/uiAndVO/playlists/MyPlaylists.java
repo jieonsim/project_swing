@@ -183,7 +183,7 @@ public class MyPlaylists extends JFrame {
 		btnLogout.setForeground(new Color(0, 0, 0));
 		btnLogout.setBounds(836, 21, 141, 34);
 		panel2.add(btnLogout);
-		
+
 		lblMid = new JLabel("");
 		lblMid.setBounds(746, 21, 83, 25);
 		panel2.add(lblMid);
@@ -268,7 +268,7 @@ public class MyPlaylists extends JFrame {
 		panel3_2.setBounds(43, 297, 245, 176);
 		panel3.add(panel3_2);
 
-		// 사용자가 업로드 했던 플레이리스트 커버 이미지를 업로드 
+		// 사용자가 업로드 했던 플레이리스트 커버 이미지를 업로드
 		Integer userIDX = SessionManager.getCurrentUserIDX();
 		PlaylistsVO playlistVO = musicDAO.getUserIdxPlayList(userIDX);
 		lblMyCover = new JLabel("");
@@ -308,6 +308,7 @@ public class MyPlaylists extends JFrame {
 		lblMyPlaylistsAllTrack.setBounds(332, 69, 370, 31);
 		panel3.add(lblMyPlaylistsAllTrack);
 
+
 		// --------------- 테이블 설계 ------------------------------------------
 
 		// 테이블 데이터와 컬럼 이름 준비
@@ -345,7 +346,6 @@ public class MyPlaylists extends JFrame {
 		}
 
 		// ----------------------------------------------------------------------
-
 
 		// 홈 버튼 클릭 시 처리
 		btnHome.addActionListener(new ActionListener() {
@@ -452,7 +452,7 @@ public class MyPlaylists extends JFrame {
 				uploadAndSetCoverImage();
 			}
 		});
-		
+
 		// albums
 		btnAlbums.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -460,7 +460,7 @@ public class MyPlaylists extends JFrame {
 				new Albums();
 			}
 		});
-		
+
 		// songs
 		btnSongs.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -683,9 +683,9 @@ public class MyPlaylists extends JFrame {
 
 	// 사용자 플레이리스트 커버 사진 추가
 	/*
-	 * 1. 이미지 업로드 처리 : 사용자가 이미지 업로드하면 선택한 이미지 파일 경로 가져오기
-	 * 2. 데이터베이스 업데이트 : 선택한 이미지의 경로를 데이터베이스에 업데이트 (updatePlaylistCoverImage 메소드 사용)
-	 * 3. 라벨에 이미지 표시 : 업로드된 이미지를 lblMyCover 라벨에 아이콘으로 설정
+	 * 1. 이미지 업로드 처리 : 사용자가 이미지 업로드하면 선택한 이미지 파일 경로 가져오기 2. 데이터베이스 업데이트 : 선택한 이미지의
+	 * 경로를 데이터베이스에 업데이트 (updatePlaylistCoverImage 메소드 사용) 3. 라벨에 이미지 표시 : 업로드된 이미지를
+	 * lblMyCover 라벨에 아이콘으로 설정
 	 */
 	private void uploadAndSetCoverImage() {
 		chooser = new JFileChooser();
@@ -711,25 +711,26 @@ public class MyPlaylists extends JFrame {
 
 			if (musicDAO.updatePlaylistCoverImage(playlistIDX, filePath)) {
 				lblMyCover.setIcon(new ImageIcon(filePath));
-				
+
 				// 파일 업로드하기
 				try {
-					File imageFile = new File(filePath);		// 업로드 되는 파일의 위치정보+파일명
-					String fileName = filePath.substring(filePath.lastIndexOf("\\")+1);	// 파일명+확장자
-					String extension = filePath.substring(filePath.lastIndexOf(".")+1);	// 확장자
-					
+					File imageFile = new File(filePath); // 업로드 되는 파일의 위치정보+파일명
+					String fileName = filePath.substring(filePath.lastIndexOf("\\") + 1); // 파일명+확장자
+					String extension = filePath.substring(filePath.lastIndexOf(".") + 1); // 확장자
+
 					// 파일명 중복 방지 처리(난수발생 방법 사용)
-					int rand = ((int) (Math.random() * 1000000)+1);
+					int rand = ((int) (Math.random() * 1000000) + 1);
 					fileName = rand + "_" + fileName;
-					
+
 					BufferedImage image = ImageIO.read(imageFile);
-					File file = new File("Images/" + fileName);	// 서버에 저장되는 폴더+파일명
-					if(!file.exists()) file.mkdir();	// 폴더가 존재하지않으면 폴더를 만들어준다.
-					
-					ImageIO.write(image, extension, file);	// images를 file로 업로드시켜준다.
+					File file = new File("Images/" + fileName); // 서버에 저장되는 폴더+파일명
+					if (!file.exists())
+						file.mkdir(); // 폴더가 존재하지않으면 폴더를 만들어준다.
+
+					ImageIO.write(image, extension, file); // images를 file로 업로드시켜준다.
 					JOptionPane.showMessageDialog(null, "커버 이미지가 업데이트되었습니다.");
-				
-					musicDAO.updatePlaylistCoverImage(playlistIDX, "Images/"+fileName);
+
+					musicDAO.updatePlaylistCoverImage(playlistIDX, "Images/" + fileName);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -738,5 +739,4 @@ public class MyPlaylists extends JFrame {
 			}
 		}
 	}
-
 }
