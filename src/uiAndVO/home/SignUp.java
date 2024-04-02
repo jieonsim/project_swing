@@ -180,7 +180,7 @@ public class SignUp extends JFrame {
 			}
 		});
 		
-		// 가입하기 버튼
+		// 회원가입 버튼
 		btnSignUp.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String userID = txtID.getText();
@@ -189,7 +189,7 @@ public class SignUp extends JFrame {
 				String phoneNumber = txtPhoneNumber.getText();
 
 				UserService userService = new UserService();
-				boolean success = userService.SignUp(userID, password, userName, phoneNumber);
+				boolean success = userService.signUp(userID, password, userName, phoneNumber);
 
 				if (success) {
 					JOptionPane.showMessageDialog(SignUp.this, "회원가입이 완료되었습니다.");

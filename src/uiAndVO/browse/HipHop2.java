@@ -443,7 +443,6 @@ public class HipHop2 extends JFrame {
 //===========================================================================
 	
 	// 내 플레이리스트에 트랙 추가
-	// myplaylist에 트랙 추가
 	private void addSelectedTracksToUserPlaylist() {
 	    // 선택된 모든 행을 추가하기 위해 배열 사용
 	    int[] selectedRows = table.getSelectedRows();

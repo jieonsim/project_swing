@@ -13,6 +13,7 @@ import uiAndVO.playlists.*;
 public class MusicDAO extends DBConn {
 
 	// browse에서 각 장르별 all track 출력
+	
 	public Vector<Vector<Object>> getTracksByGenres(String genreName) {
 		Vector<Vector<Object>> tracks = new Vector<>();
 		try {
@@ -39,7 +40,10 @@ public class MusicDAO extends DBConn {
 		return tracks;
 	}
 
-	// search에서 모든 노래 리스트 출력을 위한 메소드
+	// search에서 조건 검색 후 다시 전체 검색 시 모든 노래 리스트 출력을 위한 메소드
+	
+	
+	
 	public Vector<Vector<Object>> getAllTracks() {
 		Vector<Vector<Object>> tracks = new Vector<>();
 		try {
@@ -127,7 +131,7 @@ public class MusicDAO extends DBConn {
 			}
 
 			// 노래를 Favorite Songs 플레이리스트에 추가
-			String sql = "INSERT INTO playlistSongs (playlistIDX, songIDX) VALUES (?, ?)";
+			sql = "INSERT INTO playlistSongs (playlistIDX, songIDX) VALUES (?, ?)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, playlistIDX);
 			pstmt.setInt(2, songIDX);
@@ -219,16 +223,16 @@ public class MusicDAO extends DBConn {
 		return tracks;
 	}
 
-	// 내 플레이리스트 새로 만들기
+	// 나만의 새로운 플레이리스트 만들기
 	public boolean createNewPlaylistForUser(int userIDX, String playlistName) {
-		// SQL 쿼리문. 플레이리스트 이름과 사용자 ID를 사용하여 새로운 플레이리스트를 추가합니다.
+		// 플레이리스트 이름과 사용자 IDX를 사용하여 새로운 플레이리스트를 추가
 		sql = "INSERT INTO playlists (playlistName, userIDX, isFavorite) VALUES (?, ?, false)";
 		pstmt = null;
 
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, playlistName); // 첫 번째 물음표(?)에 플레이리스트 이름 설정
-			pstmt.setInt(2, userIDX); // 두 번째 물음표(?)에 사용자 ID 설정
+			pstmt.setInt(2, userIDX); // 두 번째 물음표(?)에 사용자 IDX 설정
 
 			int affectedRows = pstmt.executeUpdate(); // SQL 쿼리 실행
 
@@ -236,20 +240,14 @@ public class MusicDAO extends DBConn {
 				return true;
 			}
 		} catch (SQLException e) {
-			e.printStackTrace(); // 예외 발생 시 스택 트레이스 출력
+			System.out.println("SQL 오류 : " + e.getMessage());
 		} finally {
-			if (pstmt != null) {
-				try {
-					pstmt.close(); // PreparedStatement 객체 닫기
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
+			pstmtClose();
 		}
 		return false; // 쿼리 실행이 실패하거나 영향을 받은 행이 없으면 false 반환
 	}
 
-	// 사용자가 플레이리스트를 가지고 있는지 확인하는 메소드
+	// 사용자가 즐겨찾기 외 플레이리스트를 가지고 있는지 확인하는 메소드
 	public boolean userHasPlaylist(int userIDX) {
 		try {
 			sql = "SELECT COUNT(*) FROM playlists WHERE userIDX = ? AND isFavorite = FALSE";
@@ -257,27 +255,26 @@ public class MusicDAO extends DBConn {
 			pstmt.setInt(1, userIDX);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
-				return rs.getInt(1) > 0; // 새로운 플레이리스트(즐겨찾기가 아닌)가 하나라도 존재하면 true 반환
+				return rs.getInt(1) > 0; // 즐겨찾기 외 사용자화 플레이리스트가 하나라도 존재하면 true 반환
 			}
 		} catch (SQLException e) {
 			System.out.println("SQL 오류 : " + e.getMessage());
 		} finally {
 			rsClose();
 		}
-		return false; // 새로운 플레이리스트가 존재하지 않으면 false 반환
+		return false; // 사용자화 플레이리스트가 존재하지 않으면 false 반환
 	}
 
 	// 사용자가 만든 플레이리스트 IDX를 가져오는 메소드 (플레이리스트 트랙 추가와 플레이리스트 커버 사진 추가에 사용)
-	public int getUserNewPlaylistIDX(int userIDX) {
+	public int getUserPlaylistIDX(int userIDX) {
 		try {
 			// isFavorite이 false인 플레이리스트 중 가장 최근에 추가된 플레이리스트 IDX 조회
 			sql = "SELECT playlistIDX FROM playlists WHERE userIDX = ? AND isFavorite = FALSE";
-//			sql = "SELECT playlistIDX FROM playlists WHERE userIDX = ? AND isFavorite = FALSE ORDER BY playlistIDX DESC LIMIT 1";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, userIDX);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
-				return rs.getInt("playlistIDX"); // 새로운 플레이리스트 ID 반환
+				return rs.getInt("playlistIDX"); // 새로운 플레이리스트 IDX 반환
 			}
 		} catch (SQLException e) {
 			System.out.println("SQL 오류 : " + e.getMessage());
@@ -336,7 +333,7 @@ public class MusicDAO extends DBConn {
 	public boolean deleteFromUserCreatedPlaylist(int userIDX, int songIDX) {
 		try {
 			// 사용자의 isFavorite이 FALSE인 플레이리스트 IDX 찾기
-			int playlistIDX = getUserNewPlaylistIDX(userIDX);
+			int playlistIDX = getUserPlaylistIDX(userIDX);
 			if (playlistIDX == -1) {
 				return false;
 			}
@@ -403,7 +400,7 @@ public class MusicDAO extends DBConn {
 		return playlistName;
 	}
 
-	// 플레이리스트 이름 수정 메소드
+	// 플레이리스트 이름 수정
 	public boolean updatePlaylistName(int userIDX, String newPlaylistName) {
 		try {
 			sql = "UPDATE playlists SET playlistName = ? WHERE userIDX = ? AND isFavorite = FALSE";
@@ -522,12 +519,13 @@ public class MusicDAO extends DBConn {
 		return songs;
 	}
 
-	// 사용자 플레이리스트에 커버이미지 업로드를 위해 
-	public PlaylistsVO getUserIdxPlayList(Integer userIDX) {
+	// 사용자 플레이리스트에 업로드한 커버이미지 불러오기
+	public PlaylistsVO getUserIdxPlaylist(Integer userIDX) {
 		PlaylistsVO vo = new PlaylistsVO();
 		try {
-			sql = "select * from playlists where userIDX = ? order by playlistIDX desc";
-			// favorite songs는 가입과 동시에 만들어지고 사용자화 플레이리스트는 가입 후 추가로 만들 수 있기 때문에 playlistIDX를 뒤에서부터 찾는다
+			sql = "SELECT * FROM playlists WHERE userIDX = ? ORDER BY playlistIDX DESC";
+			// favorite songs는 가입과 동시에 만들어지고
+			// 사용자화 플레이리스트는 가입 후 추가로 만들 수 있기 때문에 playlistIDX를 뒤에서부터 찾는다
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, userIDX);
 			rs = pstmt.executeQuery();

@@ -183,8 +183,8 @@ public class FindToPassword extends JFrame {
 				
 				if(foundPassword != null) {
 					JOptionPane.showMessageDialog(null, "해당 아이디의 비밀번호는 " + foundPassword + " 입니다.");
-					dispose();
-					new Login();
+					dispose(); // 비밀번호 찾기 성공 시 창이 닫히고
+					new Login(); // 로그인 페이지로 이동하여 로그인 유도
 				} else {
 					JOptionPane.showMessageDialog(null, "입력하신 정보와 일치하는 계정이 없습니다.", "비밀번호 찾기 실패",
 							JOptionPane.ERROR_MESSAGE);

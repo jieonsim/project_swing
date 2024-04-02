@@ -37,7 +37,7 @@ public class MusicService {
 	        // 이미 플레이리스트가 있다면, 새로운 플레이리스트 생성 불가
 	        return false;
 	    }
-	    // 플레이리스트 생성 로직 실행
+	    // 없는 경우, 플레이리스트 생성 로직 실행
 	    return musicDAO.createNewPlaylistForUser(userIDX, playlistName);
 	}
 	
@@ -45,10 +45,10 @@ public class MusicService {
 		this.musicDAO = new MusicDAO(); // MusicDAO의 인스턴스화
 	}
 
-	// 사용자가 만든 플레이리스트에 트랙 추가
+	// 내 플레이리스트에 트랙 추가
 	public boolean addTrackToUserPlaylist(int userIDX, int songIDX) {
-	    // 먼저 사용자의 새로운 플레이리스트 IDX를 가져오기
-	    int playlistIDX = musicDAO.getUserNewPlaylistIDX(userIDX);
+	    // 먼저 사용자의 플레이리스트 IDX를 가져오기
+	    int playlistIDX = musicDAO.getUserPlaylistIDX(userIDX);
 
 	    // 사용자의 플레이리스트 IDX가 유효한 경우에만 트랙을 추가하기
 	    if (playlistIDX != -1) {
@@ -82,16 +82,12 @@ public class MusicService {
 	
 	// 사용자가 만든 플레이리스트 커버 이미지 업데이트
 	public boolean updatePlaylistCover(int userIDX, String imagePath) {
-		int playlistIDX = musicDAO.getUserNewPlaylistIDX(userIDX);
+		int playlistIDX = musicDAO.getUserPlaylistIDX(userIDX);
 		if(playlistIDX != -1) {
 			return musicDAO.updatePlaylistCoverImage(playlistIDX, imagePath);
 		}
 		return false;
 	}
 	
-//	// 라이브러리 아티스트 조회
-//	public Vector<Vector<Object>> getUserArtists(int userIDX) {
-//		return musicDAO.getUserArtists(userIDX);
-//	}
 	
 }

@@ -421,11 +421,11 @@ public class Search2 extends JFrame {
 	}
 	
 	
-	// favorite songs에 트랙 추가 메소드
+	// favorite songs에 트랙 추가
 	private void addSelectedTracksToFavoriteSongs() {
 		// 선택된 모든 행을 추가하기 위해 배열 사용
 		int[] selectedRows = table.getSelectedRows(); // 선택된 모든 행의 인덱스
-		Integer userIDX = SessionManager.getCurrentUserIDX(); // 현재 로그인한 사용자 ID
+		Integer userIDX = SessionManager.getCurrentUserIDX(); // 현재 로그인한 사용자 IDX
 
 		if (selectedRows.length > 0) {
 			if (userIDX != null) {
@@ -451,11 +451,10 @@ public class Search2 extends JFrame {
 	}
 	
 	// myplaylist에 트랙 추가
-	// myplaylist에 트랙 추가
 	private void addSelectedTracksToUserPlaylist() {
 	    // 선택된 모든 행을 추가하기 위해 배열 사용
 	    int[] selectedRows = table.getSelectedRows();
-	    // 현재 로그인한 사용자 ID 가져오기
+	    // 현재 로그인한 사용자 IDX 가져오기
 	    Integer userIDX = SessionManager.getCurrentUserIDX();
 
 	    if (selectedRows.length == 0) {
@@ -534,7 +533,7 @@ public class Search2 extends JFrame {
 		}
 	}
 
-	// 전체 검색 메소드
+	// 전체 검색
 	protected void totalSearch() {
 		data = musicService.getAllTracks();
 

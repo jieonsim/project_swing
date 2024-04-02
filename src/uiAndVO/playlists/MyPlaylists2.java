@@ -717,7 +717,7 @@ public class MyPlaylists2 extends JFrame {
 				return;
 			}
 
-			int playlistIDX = musicDAO.getUserNewPlaylistIDX(userIDX);
+			int playlistIDX = musicDAO.getUserPlaylistIDX(userIDX);
 			if (playlistIDX == -1) {
 				JOptionPane.showMessageDialog(null, "플레이리스트가 없습니다. 플레이리스트를 먼저 생성해주세요.");
 				return;

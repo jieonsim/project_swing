@@ -153,7 +153,8 @@ public class Login extends JFrame {
 				new SignUp();
 			}
 		});
-
+		
+		// 로그인 버튼
 		btnLogin.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 		        String userID = txtID.getText();
@@ -163,7 +164,7 @@ public class Login extends JFrame {
 		        UserVO userVO = userService.login(userID, password); // 로그인 시도하고 결과를 UserVO 객체로 받음
 
 		        if (userVO != null) {
-		            SessionManager.login(userVO.getUserIDX()); // 성공했다면, UserVO에서 ID 가져와서 SessionManager에 설정
+		            SessionManager.login(userVO.getUserIDX()); // 성공했다면, UserVO에서 IDX 가져와서 SessionManager에 설정
 		            dispose(); // 로그인 창 닫기
 		            new Home2(); // 메인 홈 화면으로 이동
 		        } else {

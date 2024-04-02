@@ -219,7 +219,7 @@ public class Songs extends JFrame {
 		columnNames.add("Artist Name");
 
 		Vector<Vector<Object>> data = new Vector<>();
-		Integer currentUserIDX = SessionManager.getCurrentUserIDX(); // 현재 로그인한 사용자 ID 가져오기
+		Integer currentUserIDX = SessionManager.getCurrentUserIDX(); // 현재 로그인한 사용자 IDX 가져오기
 		if (currentUserIDX != null) {
 			List<SongVO> songs = musicDAO.getUserPlaylistSongs(currentUserIDX); // 사용자의 앨범 정보 가져오기
 

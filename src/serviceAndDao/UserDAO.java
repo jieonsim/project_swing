@@ -24,7 +24,6 @@ public class UserDAO extends DBConn {
 				userVO.setPassword(rs.getString("password"));
 				userVO.setUserName(rs.getString("userName"));
 				userVO.setPhoneNumber(rs.getString("phoneNumber"));
-//				userVO.setJoinDate(rs.getString("joinDate"));
 			}
 		} catch (SQLException e) {
 			System.out.println("SQL 오류 : " + e.getMessage());
@@ -34,7 +33,7 @@ public class UserDAO extends DBConn {
 		return userVO;
 	}
 
-	// 회원가입
+	// 회원가입 정규식 및 중복 조건 만족 시 데이터베이스에 정보 저장
 	public int setSignUp(String userID, String password, String userName, String phoneNumber) {
 		int userIDX = -1; // 사용자 정보 추가 실패 시 반환될 값
 		try {
@@ -65,7 +64,7 @@ public class UserDAO extends DBConn {
 		return userIDX; // 성공 시 생성된 userIDX 반환, 실패 시 -1 반환
 	}
 
-	// 이름 + 전화번호 조합으로 아이디 찾기
+	// 회원가입 시 입력한 이름 + 전화번호 조합으로 이미 가입된 사용자가 있는지 확인
 	public String findUserID(String userName, String phoneNumber) {
 		String foundUserId = null;
 
@@ -109,7 +108,7 @@ public class UserDAO extends DBConn {
 	}
 
 	// 회원가입 시 입력한 아이디가 이미 존재하는 아이디인지 확인
-	public String IDduplicateCheck(String userID) {
+	public String isIdDuplicated(String userID) {
 		String isDuplicated = null;
 
 		try {

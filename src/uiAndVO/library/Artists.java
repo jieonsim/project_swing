@@ -245,7 +245,6 @@ public class Artists extends JFrame {
 					return column == 1 ? ImageIcon.class : Object.class; // 두번째 컬럼에는 이미지 아이콘 표시
 				}
 			};
-
 			table = new JTable(dtm);
 
 			// 0번째 열(albumIDX) 크기 줄이기

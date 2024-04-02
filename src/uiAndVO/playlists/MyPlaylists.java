@@ -270,7 +270,7 @@ public class MyPlaylists extends JFrame {
 
 		// 사용자가 업로드 했던 플레이리스트 커버 이미지를 업로드
 		Integer userIDX = SessionManager.getCurrentUserIDX();
-		PlaylistsVO playlistVO = musicDAO.getUserIdxPlayList(userIDX);
+		PlaylistsVO playlistVO = musicDAO.getUserIdxPlaylist(userIDX);
 		lblMyCover = new JLabel("");
 		lblMyCover.setIcon(new ImageIcon(playlistVO.getPlaylistCoverImagePath()));
 		lblMyCover.setHorizontalAlignment(SwingConstants.CENTER);
@@ -496,7 +496,7 @@ public class MyPlaylists extends JFrame {
 				}
 			}
 		} else {
-			JOptionPane.showMessageDialog(null, "검색하신 내용은 존재하지 않습니다.");
+			JOptionPane.showMessageDialog(null, "삭제할 노래를 선택해주세요.");
 		}
 	}
 
@@ -617,7 +617,7 @@ public class MyPlaylists extends JFrame {
 		}
 	}
 
-	// 사용자 만든 플레이리스트의 플레이리스트 이름 생성해주기
+	// 사용자 만든 플레이리스트의 플레이리스트 이름 생성
 	private void updatePlaylistNameLabel() {
 		Integer userIDX = SessionManager.getCurrentUserIDX();
 		String playlistName = musicService.getPlaylistNameByUserIDX(userIDX);
@@ -683,10 +683,13 @@ public class MyPlaylists extends JFrame {
 
 	// 사용자 플레이리스트 커버 사진 추가
 	/*
-	 * 1. 이미지 업로드 처리 : 사용자가 이미지 업로드하면 선택한 이미지 파일 경로 가져오기 2. 데이터베이스 업데이트 : 선택한 이미지의
-	 * 경로를 데이터베이스에 업데이트 (updatePlaylistCoverImage 메소드 사용) 3. 라벨에 이미지 표시 : 업로드된 이미지를
-	 * lblMyCover 라벨에 아이콘으로 설정
-	 */
+	 * 1. 이미지 업로드 처리 : 사용자가 이미지 업로드하면 선택한 이미지 파일 경로 가져오기
+	 * 2. 데이터베이스 업데이트 : 선택한 이미지의 경로를 데이터베이스에 업데이트 (updatePlaylistCoverImage 메소드 사용)
+	 * 3. 라벨에 이미지 표시 : 업로드된 이미지를
+	 * lblMyCover 라벨에 아이콘으로 설정*/
+	
+	
+	
 	private void uploadAndSetCoverImage() {
 		chooser = new JFileChooser();
 		FileNameExtensionFilter filter = new FileNameExtensionFilter("Image Files", "jpg", "png", "gif", "jpeg");
@@ -703,7 +706,7 @@ public class MyPlaylists extends JFrame {
 				return;
 			}
 
-			int playlistIDX = musicDAO.getUserNewPlaylistIDX(userIDX);
+			int playlistIDX = musicDAO.getUserPlaylistIDX(userIDX);
 			if (playlistIDX == -1) {
 				JOptionPane.showMessageDialog(null, "플레이리스트가 없습니다. 플레이리스트를 먼저 생성해주세요.");
 				return;

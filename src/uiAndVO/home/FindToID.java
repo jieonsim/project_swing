@@ -145,8 +145,8 @@ public class FindToID extends JFrame {
 
 				if (foundUserId != null) {
 					JOptionPane.showMessageDialog(null, "고객님의 정보와 일치하는 아이디는 " + foundUserId + " 입니다.");
-					dispose();
-					new Login();
+					dispose(); // 아이디 찾기 성공 시 창이 닫히고
+					new Login(); // 로그인 페이지로 이동하여 로그인 유도
 				} else {
 					JOptionPane.showMessageDialog(null, "입력하신 정보와 일치하는 아이디가 없습니다.", "아이디 찾기 실패",
 							JOptionPane.ERROR_MESSAGE);
