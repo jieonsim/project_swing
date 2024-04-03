@@ -13,7 +13,6 @@ import uiAndVO.playlists.*;
 public class MusicDAO extends DBConn {
 
 	// browse에서 각 장르별 all track 출력
-	
 	public Vector<Vector<Object>> getTracksByGenres(String genreName) {
 		Vector<Vector<Object>> tracks = new Vector<>();
 		try {
@@ -41,9 +40,6 @@ public class MusicDAO extends DBConn {
 	}
 
 	// search에서 조건 검색 후 다시 전체 검색 시 모든 노래 리스트 출력을 위한 메소드
-	
-	
-	
 	public Vector<Vector<Object>> getAllTracks() {
 		Vector<Vector<Object>> tracks = new Vector<>();
 		try {

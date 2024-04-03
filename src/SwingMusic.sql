@@ -21,7 +21,12 @@ SELECT * FROM songs WHERE aritstIDX = 2;
 SELECT * FROM playlists WHERE userIDX = 12;
 SELECT * FROM playlists WHERE userIDX = 10 AND isFavorite = TRUE;
 
-DELETE FROM users WHERE userIDX = 12;
+DELETE FROM users WHERE userIDX = 14;
+DELETE FROM users WHERE userIDX = 15;
+DELETE FROM users WHERE userIDX = 15;
+DELETE FROM users WHERE userIDX = 16;
+DELETE FROM users WHERE userIDX = 17;
+DELETE FROM users WHERE userIDX = 18;
 
 
 -- Users (사용자)
@@ -164,7 +169,11 @@ ALTER TABLE playlists
 ADD COLUMN playlistCoverImagePath VARCHAR(255);
 desc playlists;
 
-select * from playlists where userIDX = 13;
+select * from playlistSongs;
+delete * from playlists where playlistIDX = 11;
+delete * from playlists where playlistIDX = 14;
+delete * from playlists where playlistIDX = 16;
+delete * from playlists where userIDX = 18;
 
 
 -- PlaylistSongs (플레이리스트 노래)

@@ -197,10 +197,17 @@ public class SignUp extends JFrame {
 					new Login();
 				} else {
 					JOptionPane.showMessageDialog(SignUp.this, "회원가입에 실패하였습니다. 입력 정보를 확인해 주세요.");
+					resetform();
 					txtID.requestFocus();
 				}
 			}
 		});
-
+	}
+	
+	private void resetform() {
+		txtID.setText("");
+		passwordField.setText("");
+		txtName.setText("");
+		txtPhoneNumber.setText("");
 	}
 }
