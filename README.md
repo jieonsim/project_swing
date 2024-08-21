@@ -34,9 +34,12 @@ Java의 GUI Swing을 활용하여 개발한 음악 플레이리스트 애플리�
 
 ## 3️⃣ 기능별 화면 및 소개
 ### ✔ 메인 화면
-- 아직 예매가 오픈되지 않은 경기의 일정과 예매 오픈일시를 종목별로 확인
-- 예매 오픈 시간이 지났을 경우 '예매하기' 버튼으로 활성화
-- Swiper 라이브러리 이용
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/dab1d89d-3304-4cbe-9e2c-109eea887f35" alt="메인화면 GIF" width="70%">
-</p>
+- 로그인 전 : 둘러보기와 검색만 지원
+- 로그인 후 : 둘러보기, 검색, 플레이리스트 및 라이브러리 관리 가능
+- 로그인 후 로그인한 사용자의 이름 표기
+- 사용자 이름 하단에 랜덤 명언 출력
+  
+| **로그인 전** | **로그인 후** |
+|:---------------:|:---------------:|
+| ![로그인전](https://github.com/user-attachments/assets/527f557f-8339-4360-9e37-15282f6825dc) | ![로그인후](https://github.com/user-attachments/assets/1211cf9e-d35f-47c7-b9bc-83639e7be59a) |
+
