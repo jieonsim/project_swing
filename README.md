@@ -84,9 +84,11 @@ Java의 GUI Swing을 활용하여 개발한 음악 플레이리스트 애플리�
   <img src="https://github.com/user-attachments/assets/8be4d721-efa0-40df-8233-af9507007d81" alt="search" width="70%">
 </div>
 
+### ✔ Playlist
+- 회원가입 시 즐겨찾기 플레이리스트(Favorite Songs)는 자동으로 생성됨
+- 나만의 플레이리스트(My playlist)는 New Playlist 버튼 클릭 후 생성 가능
+- 나만의 플레이리스트 생성 후 플레이리스트 이름 설정 및 커버 이미지 업로드 가능
 
-
-
-
-
-### ✔ playlist
+| **커버이미지 업로드 시도** | **커버이미지 업로드 성공** |
+|:---------------:|:---------------:|
+| ![커버이미지 업로드 시도](https://github.com/user-attachments/assets/f3afc908-9ed3-451e-920e-0a07e92d9b1f) | ![커버이미지 업로드 성공](https://github.com/user-attachments/assets/be429513-6a92-4856-b136-66c045d9389a) |
