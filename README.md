@@ -28,6 +28,7 @@ Java의 GUI Swing을 활용하여 개발한 음악 플레이리스트 애플리�
 | **browse** | - 장르별로 등록되어있는 곡을 볼 수 있음 |
 | **search** | - 곡/ 앨범 / 아티스트별로 조건에 따른 검색 |
 | **playlist** | - 나만의 플레이리스트 생성 및 수정 <br> - 나만의 플레이리스트에 트랙 추가 <br> - 나만의 플레이리스트에 커버 이미지 추가 <br> - 좋아요 기능으로 즐겨찾기 플레이리스트에 트랙 추가 |
+| **library** | - 즐겨찾기와 나의 플레이리스트에 추가한 모든 트랙의 아티스트, 앨범, 곡별로 확인할 수 있음  |
 
 </div>
 
@@ -66,6 +67,9 @@ Java의 GUI Swing을 활용하여 개발한 음악 플레이리스트 애플리�
 
 
 ### ✔ browse
+| **browse 화면** | **browse > 각 장르별 화면** |
+|:---------------:|:---------------:|
+| ![browse](https://github.com/user-attachments/assets/e10e2bc9-6710-42f7-a159-85000456ddb2) | ![각 장르별 화면](https://github.com/user-attachments/assets/6f67829e-d1ec-430b-9542-4b66d73676f5) |
 
 ### ✔ search
 
