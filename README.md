@@ -34,7 +34,15 @@ Java의 GUI Swing을 활용하여 개발한 음악 플레이리스트 애플리�
 
 <hr>
 
-## 3️⃣ 기능별 화면 및 소개
+## 3️⃣ ERD
+
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/185c96f5-d7d2-46a8-9c86-970583e23897" alt="스윙뮤직플레이어 ERD" width="70%">
+</div>
+
+<hr>
+
+## 4️⃣ 기능별 화면 및 소개
 ### ✔ 메인 화면
 - 로그인 전 : 둘러보기와 검색만 지원
 - 로그인 후 : 둘러보기, 검색, 플레이리스트 및 라이브러리 관리 가능
