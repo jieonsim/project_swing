@@ -25,10 +25,10 @@ Java의 GUI Swing을 활용하여 개발한 음악 플레이리스트 애플리�
 | **기능 구분** | **세부 기능** |
 |:---------------:|---------------|
 | **회원**   | - 회원가입 <br> - 로그인 <br> - 아이디 찾기 <br> - 비밀번호 찾기 |
-| **browse** | - 장르별로 등록되어있는 곡을 볼 수 있음 |
-| **search** | - 곡/ 앨범 / 아티스트별로 조건에 따른 검색 |
-| **playlist** | - 나만의 플레이리스트 생성 및 수정 <br> - 나만의 플레이리스트에 트랙 추가 <br> - 나만의 플레이리스트에 커버 이미지 추가 <br> - 좋아요 기능으로 즐겨찾기 플레이리스트에 트랙 추가 |
-| **library** | - 즐겨찾기와 나의 플레이리스트에 추가한 모든 트랙의 아티스트, 앨범, 곡별로 확인할 수 있음  |
+| **Browse** | - 장르별로 등록되어있는 곡을 볼 수 있음 |
+| **Search** | - 곡/ 앨범 / 아티스트별로 조건에 따른 검색 |
+| **Playlist** | - 나만의 플레이리스트 생성 및 수정 <br> - 나만의 플레이리스트에 트랙 추가 <br> - 나만의 플레이리스트에 커버 이미지 추가 <br> - 좋아요 기능으로 즐겨찾기 플레이리스트에 트랙 추가 |
+| **Library** | - 즐겨찾기와 나의 플레이리스트에 추가한 모든 트랙의 아티스트, 앨범, 곡별로 확인할 수 있음  |
 
 </div>
 
@@ -66,11 +66,27 @@ Java의 GUI Swing을 활용하여 개발한 음악 플레이리스트 애플리�
 | ![아이디찾기](https://github.com/user-attachments/assets/10ed72e7-2714-4bd0-be68-bc078c7cc2d7) | ![비밀번호찾기](https://github.com/user-attachments/assets/582aa15e-ec14-4119-b909-a2074bdbec54) |
 
 
-### ✔ browse
-| **browse 화면** | **browse > 각 장르별 화면** |
+### ✔ Browse
+- Browse 메뉴 클릭 시 6개의 장르 버튼이 보임
+- 장르 버튼 클릭 시 각 장르별 트랙리스트 확인 가능
+- 로그인 후에는 트랙리스트에서 플레이리스트에 트랙 추가 가능
+
+| **Browse 메뉴** | **Browse > 각 장르별 화면** |
 |:---------------:|:---------------:|
 | ![browse](https://github.com/user-attachments/assets/e10e2bc9-6710-42f7-a159-85000456ddb2) | ![각 장르별 화면](https://github.com/user-attachments/assets/6f67829e-d1ec-430b-9542-4b66d73676f5) |
 
-### ✔ search
+### ✔ Search
+- Search 메뉴 클릭 시 등록된 모든 트랙을 볼 수 있음
+- 노래 제목, 아티스트 이름, 앨범명, 발매일로 조건 검색 가능
+- 로그인 후에는 검색 후 플레이리스트에서 트랙 추가 가능
+
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/8be4d721-efa0-40df-8233-af9507007d81" alt="search" width="70%">
+</div>
+
+
+
+
+
 
 ### ✔ playlist
