@@ -1,4 +1,5 @@
 # 스윙 뮤직 플레이어 Swing Music Player 🎵
+Java의 GUI Swing을 활용하여 개발한 음악 플레이리스트 애플리케이션입니다.
 
 > 제작 기간 : 2024.03.26 - 2024.04.03 (8일)<br>
 > 인원 : 1명 (개인 프로젝트)
@@ -30,3 +31,12 @@
 </div>
 
 <hr>
+
+## 3️⃣ 기능별 화면 및 소개
+### ✔ 메인 화면
+- 아직 예매가 오픈되지 않은 경기의 일정과 예매 오픈일시를 종목별로 확인
+- 예매 오픈 시간이 지났을 경우 '예매하기' 버튼으로 활성화
+- Swiper 라이브러리 이용
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/dab1d89d-3304-4cbe-9e2c-109eea887f35" alt="메인화면 GIF" width="70%">
+</p>
