@@ -92,3 +92,18 @@ Java의 GUI Swing을 활용하여 개발한 음악 플레이리스트 애플리�
 | **커버이미지 업로드 시도** | **커버이미지 업로드 성공** |
 |:---------------:|:---------------:|
 | ![커버이미지 업로드 시도](https://github.com/user-attachments/assets/f3afc908-9ed3-451e-920e-0a07e92d9b1f) | ![커버이미지 업로드 성공](https://github.com/user-attachments/assets/be429513-6a92-4856-b136-66c045d9389a) |
+
+- Browse와 Search 트랙리스트에서 트랙 선택 후 하트 아이콘 클릭 시 Favorite Songs에 트랙 추가됨 / 음표 아이콘 클릭 시 My Playlist에 트랙이 추가됨
+- My Playlist or Favorite Songs에서 트랙 선택 후 휴지통 아이콘 클릭 시 삭제됨
+- My Playlist or Favorite Songs에서 노래 제목, 아티스트 이름 조건으로 검색 가능
+
+| **플레이리스트에 트랙 추가** | **플레이리스트에서 트랙 삭제** |
+|:---------------:|:---------------:|
+| ![플레이리스트에 트랙 추가](https://github.com/user-attachments/assets/15312082-e355-4934-96ee-7a2e60bd5fe6) | ![플레이리스트에서 트랙 삭제](https://github.com/user-attachments/assets/3ac1c248-83b2-447d-ac01-fcd6153a2552) |
+
+### ✔ Library
+- 즐겨찾기와 나의 플레이리스트에 추가한 모든 트랙의 아티스트, 앨범, 곡별로 확인할 수 있음
+
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/89e69630-9116-4745-a324-f5d3c97ff6dc" alt="Library" width="70%">
+</div>
