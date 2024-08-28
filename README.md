@@ -124,3 +124,15 @@ Java의 GUI Swing을 활용하여 개발한 음악 플레이리스트 애플리�
 <div align="center">
   <img src="https://github.com/user-attachments/assets/89e69630-9116-4745-a324-f5d3c97ff6dc" alt="Library" width="70%">
 </div>
+
+<hr>
+
+
+프로젝트에 대한 더 자세한 내용과 개발 과정이 궁금하시다면,<br>
+아래 프로젝트 PPT를 통해 확인하실 수 있습니다. 
+<br><br>
+💁🏻 [프로젝트 PPT - PDF로 바로보기](https://drive.google.com/file/d/1ji1Y0Lgr6wbg9w3NAPSZfyW6pGXSzo3u/view?usp=sharing)
+<br>
+<br>
+<br>
+감사합니다.
