@@ -7,7 +7,7 @@ Java의 GUI Swing을 활용하여 개발한 음악 플레이리스트 애플리�
 
 💁🏻 [프로젝트 PPT - PDF로 바로보기](https://drive.google.com/file/d/1ji1Y0Lgr6wbg9w3NAPSZfyW6pGXSzo3u/view?usp=sharing)
 
-🎧 [시연 영상 - YouTube로 바로보기](https://youtu.be/norw0IZxYpI)
+🎧 [시연 영상 - YouTube로 바로보기](https://youtu.be/pBZkatMFjJI)
 
 📹 [발표 영상 - YouTube로 바로보기](https://youtu.be/GG5udTdIjs4)
 
