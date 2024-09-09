@@ -5,7 +5,7 @@ Java의 GUI Swing을 활용하여 개발한 음악 플레이리스트 애플리�
 > 제작 기간 : 2024.03.26 - 2024.04.03 (8일)<br>
 > 인원 : 1명 (개인 프로젝트)
 
-💁🏻 [프로젝트 상세 설명 PPT - PDF로 바로보기](https://drive.google.com/file/d/1ji1Y0Lgr6wbg9w3NAPSZfyW6pGXSzo3u/view?usp=sharing)
+💁🏻 [프로젝트 PPT - PDF로 바로보기](https://drive.google.com/file/d/1ji1Y0Lgr6wbg9w3NAPSZfyW6pGXSzo3u/view?usp=sharing)
 
 🎧 [시연 영상 - YouTube로 바로보기](https://youtu.be/pBZkatMFjJI)
 
